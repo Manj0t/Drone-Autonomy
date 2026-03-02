@@ -1,0 +1,7 @@
+[0.000000] (-) TimerEvent: {}
+[0.001868] (spinning_lidar) JobQueued: {'identifier': 'spinning_lidar', 'dependencies': OrderedDict()}
+[0.003478] (spinning_lidar) JobStarted: {'identifier': 'spinning_lidar'}
+[0.099751] (-) TimerEvent: {}
+[0.200423] (-) TimerEvent: {}
+[0.202699] (spinning_lidar) JobEnded: {'identifier': 'spinning_lidar', 'rc': 0}
+[0.206242] (-) EventReactorShutdown: {}

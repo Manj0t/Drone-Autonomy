@@ -1,0 +1,2 @@
+[console_scripts]
+collect_points = spinning_lidar.collect_points:main

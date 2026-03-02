@@ -1,0 +1,91 @@
+[0.000000] (-) TimerEvent: {}
+[0.001549] (spinning_lidar) JobQueued: {'identifier': 'spinning_lidar', 'dependencies': OrderedDict()}
+[0.001750] (spinning_lidar) JobStarted: {'identifier': 'spinning_lidar'}
+[0.097671] (-) TimerEvent: {}
+[0.198486] (-) TimerEvent: {}
+[0.299199] (-) TimerEvent: {}
+[0.399839] (-) TimerEvent: {}
+[0.500558] (-) TimerEvent: {}
+[0.601287] (-) TimerEvent: {}
+[0.701998] (-) TimerEvent: {}
+[0.802805] (-) TimerEvent: {}
+[0.903555] (-) TimerEvent: {}
+[1.004346] (-) TimerEvent: {}
+[1.105142] (-) TimerEvent: {}
+[1.205791] (-) TimerEvent: {}
+[1.306462] (-) TimerEvent: {}
+[1.407217] (-) TimerEvent: {}
+[1.507872] (-) TimerEvent: {}
+[1.608550] (-) TimerEvent: {}
+[1.710107] (-) TimerEvent: {}
+[1.810998] (-) TimerEvent: {}
+[1.911626] (-) TimerEvent: {}
+[2.012258] (-) TimerEvent: {}
+[2.112949] (-) TimerEvent: {}
+[2.214230] (-) TimerEvent: {}
+[2.314880] (-) TimerEvent: {}
+[2.416028] (-) TimerEvent: {}
+[2.516626] (-) TimerEvent: {}
+[2.617309] (-) TimerEvent: {}
+[2.718001] (-) TimerEvent: {}
+[2.818591] (-) TimerEvent: {}
+[2.919349] (-) TimerEvent: {}
+[3.020039] (-) TimerEvent: {}
+[3.120705] (-) TimerEvent: {}
+[3.221431] (-) TimerEvent: {}
+[3.322068] (-) TimerEvent: {}
+[3.422714] (-) TimerEvent: {}
+[3.523538] (-) TimerEvent: {}
+[3.624304] (-) TimerEvent: {}
+[3.725173] (-) TimerEvent: {}
+[3.761633] (spinning_lidar) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/spinning_lidar', 'build', '--build-base', '/home/sandhm1/ros2_ws/build/spinning_lidar/build', 'install', '--record', '/home/sandhm1/ros2_ws/build/spinning_lidar/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/sandhm1/ros2_ws/src/spinning_lidar', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'CONDA_PROMPT_MODIFIER': '(base)', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'sandhm1', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/sandhm1', 'CONDA_SHLVL': '1', 'OLDPWD': '/home/sandhm1/ros2_ws', 'DESKTOP_SESSION': 'ubuntu-xorg', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '13187', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', '_CE_M': '', '_CONDA_ROOT': '/home/sandhm1/miniconda3', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/sandhm1/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'sandhm1', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'sandhm1', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', '_CE_CONDA': '', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/sandhm1/miniconda3/bin:/home/sandhm1/miniconda3/condabin:/home/sandhm1/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/sandhm1/.local/share/JetBrains/Toolbox/scripts:/opt/gradle/bin:/opt/gradle-latest/bin', 'SESSION_MANAGER': 'local/Mtop:@/tmp/.ICE-unix/13149,unix/Mtop:/tmp/.ICE-unix/13149', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/580029b7_b7c2_4823_9926_5644b514dd96', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu-xorg', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.96', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/home/sandhm1/ros2_ws/install/spinning_lidar:/opt/ros/jazzy', 'CONDA_PYTHON_EXE': '/home/sandhm1/miniconda3/bin/python', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu-xorg', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'CONDA_DEFAULT_ENV': 'base', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', '_CONDA_EXE': '/home/sandhm1/miniconda3/bin/conda', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/sandhm1/ros2_ws/build/spinning_lidar', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg', 'CONDA_EXE': '/home/sandhm1/miniconda3/bin/conda', 'XDG_DATA_DIRS': '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/sandhm1/ros2_ws/build/spinning_lidar/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages:/home/sandhm1/ros2_ws/build/spinning_lidar:/home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'CONDA_PREFIX': '/home/sandhm1/miniconda3', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[3.825403] (-) TimerEvent: {}
+[3.926278] (-) TimerEvent: {}
+[4.027130] (-) TimerEvent: {}
+[4.127848] (-) TimerEvent: {}
+[4.228799] (-) TimerEvent: {}
+[4.329526] (-) TimerEvent: {}
+[4.430324] (-) TimerEvent: {}
+[4.531067] (-) TimerEvent: {}
+[4.631770] (-) TimerEvent: {}
+[4.732611] (-) TimerEvent: {}
+[4.833198] (-) TimerEvent: {}
+[4.933785] (-) TimerEvent: {}
+[4.993349] (spinning_lidar) StdoutLine: {'line': b'running egg_info\n'}
+[5.034070] (-) TimerEvent: {}
+[5.081186] (spinning_lidar) StdoutLine: {'line': b'writing ../../build/spinning_lidar/spinning_lidar.egg-info/PKG-INFO\n'}
+[5.082055] (spinning_lidar) StdoutLine: {'line': b'writing dependency_links to ../../build/spinning_lidar/spinning_lidar.egg-info/dependency_links.txt\n'}
+[5.082653] (spinning_lidar) StdoutLine: {'line': b'writing entry points to ../../build/spinning_lidar/spinning_lidar.egg-info/entry_points.txt\n'}
+[5.083071] (spinning_lidar) StdoutLine: {'line': b'writing requirements to ../../build/spinning_lidar/spinning_lidar.egg-info/requires.txt\n'}
+[5.083606] (spinning_lidar) StdoutLine: {'line': b'writing top-level names to ../../build/spinning_lidar/spinning_lidar.egg-info/top_level.txt\n'}
+[5.134370] (-) TimerEvent: {}
+[5.235079] (-) TimerEvent: {}
+[5.259262] (spinning_lidar) StdoutLine: {'line': b"reading manifest file '../../build/spinning_lidar/spinning_lidar.egg-info/SOURCES.txt'\n"}
+[5.262700] (spinning_lidar) StdoutLine: {'line': b"writing manifest file '../../build/spinning_lidar/spinning_lidar.egg-info/SOURCES.txt'\n"}
+[5.263582] (spinning_lidar) StdoutLine: {'line': b'running build\n'}
+[5.264149] (spinning_lidar) StdoutLine: {'line': b'running build_py\n'}
+[5.264535] (spinning_lidar) StdoutLine: {'line': b'copying spinning_lidar/collect_points.py -> /home/sandhm1/ros2_ws/build/spinning_lidar/build/lib/spinning_lidar\n'}
+[5.265555] (spinning_lidar) StdoutLine: {'line': b'running install\n'}
+[5.293315] (spinning_lidar) StdoutLine: {'line': b'running install_lib\n'}
+[5.335266] (-) TimerEvent: {}
+[5.380530] (spinning_lidar) StdoutLine: {'line': b'copying /home/sandhm1/ros2_ws/build/spinning_lidar/build/lib/spinning_lidar/collect_points.py -> /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar\n'}
+[5.382628] (spinning_lidar) StdoutLine: {'line': b'byte-compiling /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar/collect_points.py to collect_points.cpython-312.pyc\n'}
+[5.386199] (spinning_lidar) StdoutLine: {'line': b'running install_data\n'}
+[5.386813] (spinning_lidar) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.435450] (-) TimerEvent: {}
+[5.467622] (spinning_lidar) StdoutLine: {'line': b"removing '/home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar-0.0.0-py3.12.egg-info' (and everything under it)\n"}
+[5.469080] (spinning_lidar) StdoutLine: {'line': b'Copying ../../build/spinning_lidar/spinning_lidar.egg-info to /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar-0.0.0-py3.12.egg-info\n'}
+[5.472190] (spinning_lidar) StdoutLine: {'line': b'running install_scripts\n'}
+[5.535756] (-) TimerEvent: {}
+[5.636488] (-) TimerEvent: {}
+[5.737222] (-) TimerEvent: {}
+[5.838122] (-) TimerEvent: {}
+[5.938828] (-) TimerEvent: {}
+[6.039524] (-) TimerEvent: {}
+[6.092522] (spinning_lidar) StdoutLine: {'line': b'Installing collect_points script to /home/sandhm1/ros2_ws/install/spinning_lidar/lib/spinning_lidar\n'}
+[6.094062] (spinning_lidar) StdoutLine: {'line': b"writing list of installed files to '/home/sandhm1/ros2_ws/build/spinning_lidar/install.log'\n"}
+[6.139782] (-) TimerEvent: {}
+[6.240990] (-) TimerEvent: {}
+[6.266732] (spinning_lidar) CommandEnded: {'returncode': 0}
+[6.313801] (spinning_lidar) JobEnded: {'identifier': 'spinning_lidar', 'rc': 0}
+[6.317363] (-) EventReactorShutdown: {}

@@ -1,0 +1,35 @@
+running egg_info
+creating ../../build/spinning_lidar/spinning_lidar.egg-info
+writing ../../build/spinning_lidar/spinning_lidar.egg-info/PKG-INFO
+writing dependency_links to ../../build/spinning_lidar/spinning_lidar.egg-info/dependency_links.txt
+writing entry points to ../../build/spinning_lidar/spinning_lidar.egg-info/entry_points.txt
+writing requirements to ../../build/spinning_lidar/spinning_lidar.egg-info/requires.txt
+writing top-level names to ../../build/spinning_lidar/spinning_lidar.egg-info/top_level.txt
+writing manifest file '../../build/spinning_lidar/spinning_lidar.egg-info/SOURCES.txt'
+reading manifest file '../../build/spinning_lidar/spinning_lidar.egg-info/SOURCES.txt'
+writing manifest file '../../build/spinning_lidar/spinning_lidar.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/sandhm1/ros2_ws/build/spinning_lidar/build
+creating /home/sandhm1/ros2_ws/build/spinning_lidar/build/lib
+creating /home/sandhm1/ros2_ws/build/spinning_lidar/build/lib/spinning_lidar
+copying spinning_lidar/collect_points.py -> /home/sandhm1/ros2_ws/build/spinning_lidar/build/lib/spinning_lidar
+copying spinning_lidar/__init__.py -> /home/sandhm1/ros2_ws/build/spinning_lidar/build/lib/spinning_lidar
+running install
+running install_lib
+creating /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar
+copying /home/sandhm1/ros2_ws/build/spinning_lidar/build/lib/spinning_lidar/collect_points.py -> /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar
+copying /home/sandhm1/ros2_ws/build/spinning_lidar/build/lib/spinning_lidar/__init__.py -> /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar
+byte-compiling /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar/collect_points.py to collect_points.cpython-312.pyc
+byte-compiling /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/sandhm1/ros2_ws/install/spinning_lidar/share/ament_index
+creating /home/sandhm1/ros2_ws/install/spinning_lidar/share/ament_index/resource_index
+creating /home/sandhm1/ros2_ws/install/spinning_lidar/share/ament_index/resource_index/packages
+copying resource/spinning_lidar -> /home/sandhm1/ros2_ws/install/spinning_lidar/share/ament_index/resource_index/packages
+copying package.xml -> /home/sandhm1/ros2_ws/install/spinning_lidar/share/spinning_lidar
+running install_egg_info
+Copying ../../build/spinning_lidar/spinning_lidar.egg-info to /home/sandhm1/ros2_ws/install/spinning_lidar/lib/python3.12/site-packages/spinning_lidar-0.0.0-py3.12.egg-info
+running install_scripts
+Installing collect_points script to /home/sandhm1/ros2_ws/install/spinning_lidar/lib/spinning_lidar
+writing list of installed files to '/home/sandhm1/ros2_ws/build/spinning_lidar/install.log'
