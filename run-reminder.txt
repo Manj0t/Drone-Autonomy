@@ -1,0 +1,16 @@
+Terminal 1:
+make px4_sitl gz_x500_lidar_2d
+
+Terminal 2:
+ros2 run ros_gz_bridge parameter_bridge /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
+
+Terminal 3:
+rviz2
+
+Terminal 4:
+ros2 run spinning_lidar collect_points
+
+Helpful Commands:
+gz topic -i -t /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan
+ros2 topic echo /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan/points --once
+source /opt/ros/jazzy/setup.bash 
