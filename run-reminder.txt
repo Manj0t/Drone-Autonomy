@@ -14,3 +14,5 @@ Helpful Commands:
 gz topic -i -t /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan
 ros2 topic echo /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan/points --once
 source /opt/ros/jazzy/setup.bash 
+gz topic -l
+
