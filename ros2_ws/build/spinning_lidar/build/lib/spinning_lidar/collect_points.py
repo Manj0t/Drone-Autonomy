@@ -32,7 +32,7 @@ class ScanPrinter(Node):
         marker.ns = "lidar"
         marker.id = 0
 
-        marker.pose.orientation.w = 1.0  # valid orientation
+        marker.pose.orientation.w = 1.0  # orientation
 
         # RGB
         marker.color.r = 1.0
@@ -73,7 +73,7 @@ class ScanPrinter(Node):
 
         m.scale.x = 0.005  # line thickness (meters)
 
-        # Color (alpha is crucial)
+        # Color
         m.color.r = 0.0
         m.color.g = 1.0
         m.color.b = 0.0
@@ -82,7 +82,7 @@ class ScanPrinter(Node):
         max_r = msg.range_max
         angle = msg.angle_min
 
-        step = 10  # draw every 10th beam so it isn't a solid blob (tune this)
+        step = 10  # draw every 10th beam so it isn't a solid blob
         for i, r in enumerate(msg.ranges):
             if i % step != 0:
                 angle += msg.angle_increment

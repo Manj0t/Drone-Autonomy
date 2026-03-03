@@ -16,3 +16,10 @@ ros2 topic echo /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v
 source /opt/ros/jazzy/setup.bash 
 gz topic -l
 
+
+rm -rf build install log
+colcon build --symlink-install
+source install/setup.bash
+
+sudo apt update
+sudo apt install ros-$ROS_DISTRO-px4-msgs
