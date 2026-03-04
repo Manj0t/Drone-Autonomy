@@ -1,3 +1,1 @@
-uint64 timestamp
-uint8 status
-char[50] error
+/home/sandhm1/Drone-Autonomy/ros2_ws/src/px4_msgs/msg/OpenDroneIdArmStatus.msg

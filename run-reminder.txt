@@ -23,3 +23,25 @@ source install/setup.bash
 
 sudo apt update
 sudo apt install ros-$ROS_DISTRO-px4-msgs
+
+
+
+Install this:
+sudo apt update
+sudo apt install git build-essential cmake
+
+cd ~
+git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git
+cd Micro-XRCE-DDS-Agent
+
+mkdir build
+cd build
+cmake ..
+make -j$(nproc)
+
+sudo make install
+sudo ldconfig
+
+
+
+ros2 topic list | grep fmu

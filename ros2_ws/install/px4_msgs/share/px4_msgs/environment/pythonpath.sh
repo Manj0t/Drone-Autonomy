@@ -1,3 +1,1 @@
-# generated from ament_package/template/environment_hook/pythonpath.sh.in
-
-ament_prepend_unique_value PYTHONPATH "$AMENT_CURRENT_PREFIX/lib/python3.12/site-packages"
+/home/sandhm1/Drone-Autonomy/ros2_ws/build/px4_msgs/ament_cmake_environment_hooks/pythonpath.sh

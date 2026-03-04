@@ -1,7 +1,1 @@
-uint64 timestamp			# time since system start (microseconds)
-uint8 INDEX_ROLL = 0
-uint8 INDEX_PITCH = 1
-uint8 INDEX_YAW = 2
-
-uint64 timestamp_sample	    # the timestamp the data this control response is based on was sampled
-float32[3] control	# Normalized output. 1 means maximum positive position. -1 maximum negative position. 0 means no deflection. NaN maps to disarmed.
+/home/sandhm1/Drone-Autonomy/ros2_ws/src/px4_msgs/msg/GimbalControls.msg

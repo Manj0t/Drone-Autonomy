@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>offboard_control</name>
+  <version>0.0.0</version>
+  <description>PX4 offboard control node using ROS 2 + px4_msgs</description>
+
+  <maintainer email="manjotssandhu1@gmail.com">sandhm1</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>px4_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,24 @@
+T1:
+make
+
+T2:
+source /opt/ros/jazzy/setup.bash
+source ~/Drone-Autonomy/ros2_ws/install/setup.bash
+ros2 run offboard_control offboard_control_node
+
+if needed:
+rm -rf build install log
+colcon build --symlink-install
+
+T3 (Bridge):
+MicroXRCEAgent udp4 -p 8888
+
+checks:
+ros2 topic info /fmu/in/offboard_control_mode
+ros2 topic info /fmu/in/trajectory_setpoint
+
+T4:
+Launch QGrounControl*
+
+commander arm
+commander mode offboard (code handles movement, etc.)
