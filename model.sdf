@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.9">
+  <model name="x500_lidar_2d">
+
+    <include merge="true">
+      <uri>x500</uri>
+    </include>
+
+    <!-- x = forward, y = right (I trhink), z = up, roll, yaw -->
+    <include merge="true">
+      <uri>model://lidar_2d_v2</uri>
+      <pose>0.12 0 0.26 0 0 0</pose>
+    </include>
+
+    <!-- Mount link placed at the SAME pose (in model frame) -->
+    <link name="lidar_mount">
+      <pose>0.12 0 0.26 0 0 0</pose>
+      <inertial>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>1e-4</ixx> <iyy>1e-4</iyy> <izz>1e-4</izz>
+          <ixy>0</ixy> <ixz>0</ixz> <iyz>0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Servo joint: base_link -> lidar_mount -->
+    <joint name="LidarPitchJoint" type="revolute">
+      <parent>base_link</parent>
+      <child>lidar_mount</child>
+      <pose>0 0 0 0 0 0</pose>
+
+      <!-- Pitch axis -->
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.6</lower>
+          <upper>0.6</upper>
+          <effort>5.0</effort>
+          <velocity>8.0</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.02</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- Attach lidar's main link to the mount (NO additional offsets) -->
+    <joint name="LidarFixedToMount" type="fixed">
+      <parent>lidar_mount</parent>
+      <child>link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    	<!-- Publishes joint states (optional but helpful) -->
+	<plugin filename="libgz-sim-joint-state-publisher-system.so"
+        	name="gz::sim::systems::JointStatePublisher"/>
+
+	<!-- Drives your joint from a commanded position topic -->
+	<plugin filename="libgz-sim-joint-position-controller-system.so"
+        	name="gz::sim::systems::JointPositionController">
+  	 <joint_name>LidarPitchJoint</joint_name>
+  	 <topic>/model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos</topic>
+  	 <p_gain>20</p_gain>
+	</plugin>
+
+  </model>
+</sdf>
