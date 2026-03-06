@@ -105,26 +105,26 @@ static char toplevel_type_raw_source[] =
   "# It allows mapping triggers from various external interfaces like RC channels or MAVLink to cause an action.\n"
   "# Request are published by `manual_control` and subscribed by the `commander` and `vtol_att_control` modules.\n"
   "\n"
-  "uint64 timestamp  # [us] Time since system start\n"
+  "uint64 timestamp # [us] Time since system start\n"
   "\n"
-  "uint8 action                                     # [@enum ACTION] Requested action\n"
-  "uint8 ACTION_DISARM = 0                          # Disarm vehicle\n"
-  "uint8 ACTION_ARM = 1                             # Arm vehicle\n"
-  "uint8 ACTION_TOGGLE_ARMING = 2                   # Toggle arming\n"
-  "uint8 ACTION_UNKILL = 3                          # Revert a kill action\n"
-  "uint8 ACTION_KILL = 4                            # Kill vehicle (instantly stop the motors)\n"
-  "uint8 ACTION_SWITCH_MODE = 5                     # Switch mode. The target mode is set in the `mode` field.\n"
-  "uint8 ACTION_VTOL_TRANSITION_TO_MULTICOPTER = 6  # Transition to hover flight\n"
-  "uint8 ACTION_VTOL_TRANSITION_TO_FIXEDWING = 7    # Transition to fast forward flight\n"
-  "uint8 ACTION_TERMINATION = 8                     # Irreversibly output failsafe values on all outputs, trigger parachute\n"
+  "uint8 action # [@enum ACTION] Requested action\n"
+  "uint8 ACTION_DISARM = 0 # Disarm vehicle\n"
+  "uint8 ACTION_ARM = 1 # Arm vehicle\n"
+  "uint8 ACTION_TOGGLE_ARMING = 2 # Toggle arming\n"
+  "uint8 ACTION_UNKILL = 3 # Revert a kill action\n"
+  "uint8 ACTION_KILL = 4 # Kill vehicle (instantly stop the motors)\n"
+  "uint8 ACTION_SWITCH_MODE = 5 # Switch mode. The target mode is set in the `mode` field.\n"
+  "uint8 ACTION_VTOL_TRANSITION_TO_MULTICOPTER = 6 # Transition to hover flight\n"
+  "uint8 ACTION_VTOL_TRANSITION_TO_FIXEDWING = 7 # Transition to fast forward flight\n"
+  "uint8 ACTION_TERMINATION = 8 # Irreversibly output failsafe values on all outputs, trigger parachute\n"
   "\n"
-  "uint8 source                    # [@enum SOURCE] Request trigger type, such as a switch, button or gesture\n"
-  "uint8 SOURCE_STICK_GESTURE = 0  # Triggered by holding the sticks in a certain position\n"
-  "uint8 SOURCE_RC_SWITCH = 1      # Triggered by an RC switch moving into a certain position\n"
-  "uint8 SOURCE_RC_BUTTON = 2      # Triggered by a momentary button on the RC being pressed or held\n"
-  "uint8 SOURCE_RC_MODE_SLOT = 3   # Mode change through the RC mode selection mechanism\n"
+  "uint8 source # [@enum SOURCE] Request trigger type, such as a switch, button or gesture\n"
+  "uint8 SOURCE_STICK_GESTURE = 0 # Triggered by holding the sticks in a certain position\n"
+  "uint8 SOURCE_RC_SWITCH = 1 # Triggered by an RC switch moving into a certain position\n"
+  "uint8 SOURCE_RC_BUTTON = 2 # Triggered by a momentary button on the RC being pressed or held\n"
+  "uint8 SOURCE_RC_MODE_SLOT = 3 # Mode change through the RC mode selection mechanism\n"
   "\n"
-  "uint8 mode  # Requested mode. Only applies when `action` is `ACTION_SWITCH_MODE`. Values for this field are defined by the `vehicle_status_s::NAVIGATION_STATE_*` enumeration.";
+  "uint8 mode # Requested mode. Only applies when `action` is `ACTION_SWITCH_MODE`. Values for this field are defined by the `vehicle_status_s::NAVIGATION_STATE_*` enumeration.";
 
 static char msg_encoding[] = "msg";
 
@@ -138,7 +138,7 @@ px4_msgs__msg__ActionRequest__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__ActionRequest__TYPE_NAME, 26, 26},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 1938, 1938},
+    {toplevel_type_raw_source, 1701, 1701},
   };
   return &source;
 }

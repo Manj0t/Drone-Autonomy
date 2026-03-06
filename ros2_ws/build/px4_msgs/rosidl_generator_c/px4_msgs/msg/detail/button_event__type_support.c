@@ -6,8 +6,8 @@
 
 #include "px4_msgs/msg/detail/button_event__type_support.h"
 #include "px4_msgs/msg/detail/button_event__struct.h"
-#include "rosidl_typesupport_interface/macros.h"
 #include "px4_msgs/msg/detail/button_event__functions.h"
+#include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus
 extern "C"

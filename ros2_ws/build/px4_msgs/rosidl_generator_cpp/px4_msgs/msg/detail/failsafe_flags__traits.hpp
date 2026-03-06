@@ -245,6 +245,34 @@ inline void to_flow_style_yaml(
     out << ", ";
   }
 
+  // member: fd_critical_failure
+  {
+    out << "fd_critical_failure: ";
+    rosidl_generator_traits::value_to_yaml(msg.fd_critical_failure, out);
+    out << ", ";
+  }
+
+  // member: fd_esc_arming_failure
+  {
+    out << "fd_esc_arming_failure: ";
+    rosidl_generator_traits::value_to_yaml(msg.fd_esc_arming_failure, out);
+    out << ", ";
+  }
+
+  // member: fd_imbalanced_prop
+  {
+    out << "fd_imbalanced_prop: ";
+    rosidl_generator_traits::value_to_yaml(msg.fd_imbalanced_prop, out);
+    out << ", ";
+  }
+
+  // member: fd_motor_failure
+  {
+    out << "fd_motor_failure: ";
+    rosidl_generator_traits::value_to_yaml(msg.fd_motor_failure, out);
+    out << ", ";
+  }
+
   // member: geofence_breached
   {
     out << "geofence_breached: ";
@@ -294,31 +322,10 @@ inline void to_flow_style_yaml(
     out << ", ";
   }
 
-  // member: fd_critical_failure
+  // member: parachute_unhealthy
   {
-    out << "fd_critical_failure: ";
-    rosidl_generator_traits::value_to_yaml(msg.fd_critical_failure, out);
-    out << ", ";
-  }
-
-  // member: fd_esc_arming_failure
-  {
-    out << "fd_esc_arming_failure: ";
-    rosidl_generator_traits::value_to_yaml(msg.fd_esc_arming_failure, out);
-    out << ", ";
-  }
-
-  // member: fd_imbalanced_prop
-  {
-    out << "fd_imbalanced_prop: ";
-    rosidl_generator_traits::value_to_yaml(msg.fd_imbalanced_prop, out);
-    out << ", ";
-  }
-
-  // member: fd_motor_failure
-  {
-    out << "fd_motor_failure: ";
-    rosidl_generator_traits::value_to_yaml(msg.fd_motor_failure, out);
+    out << "parachute_unhealthy: ";
+    rosidl_generator_traits::value_to_yaml(msg.parachute_unhealthy, out);
   }
   out << "}";
 }  // NOLINT(readability/fn_size)
@@ -637,6 +644,46 @@ inline void to_block_style_yaml(
     out << "\n";
   }
 
+  // member: fd_critical_failure
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "fd_critical_failure: ";
+    rosidl_generator_traits::value_to_yaml(msg.fd_critical_failure, out);
+    out << "\n";
+  }
+
+  // member: fd_esc_arming_failure
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "fd_esc_arming_failure: ";
+    rosidl_generator_traits::value_to_yaml(msg.fd_esc_arming_failure, out);
+    out << "\n";
+  }
+
+  // member: fd_imbalanced_prop
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "fd_imbalanced_prop: ";
+    rosidl_generator_traits::value_to_yaml(msg.fd_imbalanced_prop, out);
+    out << "\n";
+  }
+
+  // member: fd_motor_failure
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "fd_motor_failure: ";
+    rosidl_generator_traits::value_to_yaml(msg.fd_motor_failure, out);
+    out << "\n";
+  }
+
   // member: geofence_breached
   {
     if (indentation > 0) {
@@ -707,43 +754,13 @@ inline void to_block_style_yaml(
     out << "\n";
   }
 
-  // member: fd_critical_failure
+  // member: parachute_unhealthy
   {
     if (indentation > 0) {
       out << std::string(indentation, ' ');
     }
-    out << "fd_critical_failure: ";
-    rosidl_generator_traits::value_to_yaml(msg.fd_critical_failure, out);
-    out << "\n";
-  }
-
-  // member: fd_esc_arming_failure
-  {
-    if (indentation > 0) {
-      out << std::string(indentation, ' ');
-    }
-    out << "fd_esc_arming_failure: ";
-    rosidl_generator_traits::value_to_yaml(msg.fd_esc_arming_failure, out);
-    out << "\n";
-  }
-
-  // member: fd_imbalanced_prop
-  {
-    if (indentation > 0) {
-      out << std::string(indentation, ' ');
-    }
-    out << "fd_imbalanced_prop: ";
-    rosidl_generator_traits::value_to_yaml(msg.fd_imbalanced_prop, out);
-    out << "\n";
-  }
-
-  // member: fd_motor_failure
-  {
-    if (indentation > 0) {
-      out << std::string(indentation, ' ');
-    }
-    out << "fd_motor_failure: ";
-    rosidl_generator_traits::value_to_yaml(msg.fd_motor_failure, out);
+    out << "parachute_unhealthy: ";
+    rosidl_generator_traits::value_to_yaml(msg.parachute_unhealthy, out);
     out << "\n";
   }
 }  // NOLINT(readability/fn_size)

@@ -6,8 +6,8 @@
 
 #include "px4_msgs/msg/detail/differential_pressure__struct.h"
 #include "px4_msgs/msg/detail/differential_pressure__functions.h"
-#include "rosidl_typesupport_interface/macros.h"
 #include "px4_msgs/msg/detail/differential_pressure__type_support.h"
+#include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus
 extern "C"

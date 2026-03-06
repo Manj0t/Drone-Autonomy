@@ -5,8 +5,8 @@
 #include <string.h>
 
 #include "px4_msgs/msg/detail/arming_check_reply__functions.h"
-#include "px4_msgs/msg/detail/arming_check_reply__struct.h"
 #include "px4_msgs/msg/detail/arming_check_reply__type_support.h"
+#include "px4_msgs/msg/detail/arming_check_reply__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus

@@ -11,10 +11,10 @@ px4_msgs__msg__FailsafeFlags__get_type_hash(
 {
   (void)type_support;
   static rosidl_type_hash_t hash = {1, {
-      0xdd, 0xca, 0xb5, 0x2d, 0x17, 0x26, 0x10, 0xc3,
-      0x68, 0xdf, 0xfc, 0xd0, 0xeb, 0x2c, 0x37, 0x2d,
-      0xd5, 0xe6, 0x4c, 0xa1, 0xb4, 0x9b, 0x02, 0xaf,
-      0xcd, 0xef, 0x19, 0xe2, 0xc4, 0x94, 0xe6, 0x9d,
+      0xa2, 0x82, 0xbd, 0xe2, 0x4d, 0x2e, 0xdb, 0xb0,
+      0xd7, 0x21, 0x72, 0xe0, 0x06, 0x80, 0x98, 0xc2,
+      0x90, 0x8e, 0x98, 0x0d, 0xe9, 0xb3, 0x05, 0xee,
+      0x74, 0x18, 0x66, 0x25, 0x0b, 0x33, 0x4a, 0x6b,
     }};
   return &hash;
 }
@@ -62,6 +62,10 @@ static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__gcs_connection_lost[] = "g
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__battery_warning[] = "battery_warning";
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__battery_low_remaining_time[] = "battery_low_remaining_time";
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__battery_unhealthy[] = "battery_unhealthy";
+static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_critical_failure[] = "fd_critical_failure";
+static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_esc_arming_failure[] = "fd_esc_arming_failure";
+static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_imbalanced_prop[] = "fd_imbalanced_prop";
+static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_motor_failure[] = "fd_motor_failure";
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__geofence_breached[] = "geofence_breached";
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__mission_failure[] = "mission_failure";
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__vtol_fixed_wing_system_failure[] = "vtol_fixed_wing_system_failure";
@@ -69,10 +73,7 @@ static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__wind_limit_exceeded[] = "w
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__flight_time_limit_exceeded[] = "flight_time_limit_exceeded";
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__position_accuracy_low[] = "position_accuracy_low";
 static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__navigator_failure[] = "navigator_failure";
-static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_critical_failure[] = "fd_critical_failure";
-static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_esc_arming_failure[] = "fd_esc_arming_failure";
-static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_imbalanced_prop[] = "fd_imbalanced_prop";
-static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_motor_failure[] = "fd_motor_failure";
+static char px4_msgs__msg__FailsafeFlags__FIELD_NAME__parachute_unhealthy[] = "parachute_unhealthy";
 
 static rosidl_runtime_c__type_description__Field px4_msgs__msg__FailsafeFlags__FIELDS[] = {
   {
@@ -386,6 +387,46 @@ static rosidl_runtime_c__type_description__Field px4_msgs__msg__FailsafeFlags__F
     {NULL, 0, 0},
   },
   {
+    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_critical_failure, 19, 19},
+    {
+      rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
+      0,
+      0,
+      {NULL, 0, 0},
+    },
+    {NULL, 0, 0},
+  },
+  {
+    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_esc_arming_failure, 21, 21},
+    {
+      rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
+      0,
+      0,
+      {NULL, 0, 0},
+    },
+    {NULL, 0, 0},
+  },
+  {
+    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_imbalanced_prop, 18, 18},
+    {
+      rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
+      0,
+      0,
+      {NULL, 0, 0},
+    },
+    {NULL, 0, 0},
+  },
+  {
+    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_motor_failure, 16, 16},
+    {
+      rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
+      0,
+      0,
+      {NULL, 0, 0},
+    },
+    {NULL, 0, 0},
+  },
+  {
     {px4_msgs__msg__FailsafeFlags__FIELD_NAME__geofence_breached, 17, 17},
     {
       rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
@@ -456,37 +497,7 @@ static rosidl_runtime_c__type_description__Field px4_msgs__msg__FailsafeFlags__F
     {NULL, 0, 0},
   },
   {
-    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_critical_failure, 19, 19},
-    {
-      rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
-      0,
-      0,
-      {NULL, 0, 0},
-    },
-    {NULL, 0, 0},
-  },
-  {
-    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_esc_arming_failure, 21, 21},
-    {
-      rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
-      0,
-      0,
-      {NULL, 0, 0},
-    },
-    {NULL, 0, 0},
-  },
-  {
-    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_imbalanced_prop, 18, 18},
-    {
-      rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
-      0,
-      0,
-      {NULL, 0, 0},
-    },
-    {NULL, 0, 0},
-  },
-  {
-    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__fd_motor_failure, 16, 16},
+    {px4_msgs__msg__FailsafeFlags__FIELD_NAME__parachute_unhealthy, 19, 19},
     {
       rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_BOOLEAN,
       0,
@@ -506,7 +517,7 @@ px4_msgs__msg__FailsafeFlags__get_type_description(
   static const rosidl_runtime_c__type_description__TypeDescription description = {
     {
       {px4_msgs__msg__FailsafeFlags__TYPE_NAME, 26, 26},
-      {px4_msgs__msg__FailsafeFlags__FIELDS, 42, 42},
+      {px4_msgs__msg__FailsafeFlags__FIELDS, 43, 43},
     },
     {NULL, 0, 0},
   };
@@ -563,6 +574,12 @@ static char toplevel_type_raw_source[] =
   "bool battery_low_remaining_time       # Low battery based on remaining flight time\n"
   "bool battery_unhealthy                # Battery unhealthy\n"
   "\n"
+  "# Failure detector\n"
+  "bool fd_critical_failure              # Critical failure (attitude/altitude limit exceeded, or external ATS)\n"
+  "bool fd_esc_arming_failure            # ESC failed to arm\n"
+  "bool fd_imbalanced_prop               # Imbalanced propeller detected\n"
+  "bool fd_motor_failure                 # Motor failure\n"
+  "\n"
   "# Other\n"
   "bool geofence_breached        \\t      # Geofence breached (one or multiple)\n"
   "bool mission_failure                  # Mission failure\n"
@@ -571,12 +588,7 @@ static char toplevel_type_raw_source[] =
   "bool flight_time_limit_exceeded       # Maximum flight time exceeded\n"
   "bool position_accuracy_low            # Position estimate has dropped below threshold, but is currently still declared valid\n"
   "bool navigator_failure        \\t      # Navigator failed to execute a mode\n"
-  "\n"
-  "# Failure detector\n"
-  "bool fd_critical_failure              # Critical failure (attitude/altitude limit exceeded, or external ATS)\n"
-  "bool fd_esc_arming_failure            # ESC failed to arm\n"
-  "bool fd_imbalanced_prop               # Imbalanced propeller detected\n"
-  "bool fd_motor_failure                 # Motor failure";
+  "bool parachute_unhealthy              # Parachute system missing or unhealthy";
 
 static char msg_encoding[] = "msg";
 
@@ -590,7 +602,7 @@ px4_msgs__msg__FailsafeFlags__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__FailsafeFlags__TYPE_NAME, 26, 26},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 3094, 3094},
+    {toplevel_type_raw_source, 3172, 3172},
   };
   return &source;
 }

@@ -122,7 +122,7 @@ module px4_msgs {
       float time_remaining_s;
 
       @verbatim (language="comment", text=
-        "[°C] [@invalid NaN] Temperature of the battery")
+        "[degC] [@invalid NaN] Temperature of the battery")
       float temperature;
 
       @verbatim (language="comment", text=

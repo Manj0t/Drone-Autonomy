@@ -1,1 +1,1 @@
-/home/sandhm1/Drone-Autonomy/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/mag_worker_data.h
+/home/sandhm1/drone-autonomy/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/mag_worker_data.h

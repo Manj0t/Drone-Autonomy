@@ -312,40 +312,40 @@ static char toplevel_type_raw_source[] =
   "# Note that the external component is identified by its registration_id, which is allocated to the component during registration (arming_check_id in RegisterExtComponentReply).\n"
   "# The message is not used by internal/FMU components, as their mode requirements are known at compile time.\n"
   "\n"
-  "uint32 MESSAGE_VERSION  = 1\n"
+  "uint32 MESSAGE_VERSION = 1\n"
   "\n"
   "uint64 timestamp # [us] Time since system start.\n"
   "\n"
-  "uint8 request_id       # [-] Id of ArmingCheckRequest for which this is a response\n"
-  "uint8 registration_id  # [-] Id of external component emitting this response\n"
+  "uint8 request_id # [-] Id of ArmingCheckRequest for which this is a response\n"
+  "uint8 registration_id # [-] Id of external component emitting this response\n"
   "\n"
-  "uint8 HEALTH_COMPONENT_INDEX_NONE = 0  # Index of health component for which this response applies\n"
+  "uint8 HEALTH_COMPONENT_INDEX_NONE = 0 # Index of health component for which this response applies\n"
   "\n"
-  "uint8 health_component_index      # [@enum HEALTH_COMPONENT_INDEX]\n"
-  "bool health_component_is_present  # Unused. Intended for use with health events interface (health_component_t in events.json)\n"
-  "bool health_component_warning     # Unused. Intended for use with health events interface (health_component_t in events.json)\n"
-  "bool health_component_error       # Unused. Intended for use with health events interface (health_component_t in events.json)\n"
+  "uint8 health_component_index # [@enum HEALTH_COMPONENT_INDEX]\n"
+  "bool health_component_is_present # Unused. Intended for use with health events interface (health_component_t in events.json)\n"
+  "bool health_component_warning # Unused. Intended for use with health events interface (health_component_t in events.json)\n"
+  "bool health_component_error # Unused. Intended for use with health events interface (health_component_t in events.json)\n"
   "\n"
-  "bool can_arm_and_run  # True if the component can arm. For navigation mode components, true if the component can arm in the mode or switch to the mode when already armed\n"
+  "bool can_arm_and_run # True if the component can arm. For navigation mode components, true if the component can arm in the mode or switch to the mode when already armed\n"
   "\n"
-  "uint8 num_events  # Number of queued failure messages (Event) in the events field\n"
+  "uint8 num_events # Number of queued failure messages (Event) in the events field\n"
   "\n"
-  "Event[5] events  # Arming failure reasons (Queue of events to report to GCS)\n"
+  "Event[5] events # Arming failure reasons (Queue of events to report to GCS)\n"
   "\n"
   "# Mode requirements\n"
-  "bool mode_req_angular_velocity         # Requires angular velocity estimate (e.g. from gyroscope)\n"
-  "bool mode_req_attitude                 # Requires an attitude estimate\n"
-  "bool mode_req_local_alt                # Requires a local altitude estimate\n"
-  "bool mode_req_local_position           # Requires a local position estimate\n"
-  "bool mode_req_local_position_relaxed   # Requires a more relaxed global position estimate\n"
-  "bool mode_req_global_position          # Requires a global position estimate\n"
-  "bool mode_req_global_position_relaxed  # Requires a relaxed global position estimate\n"
-  "bool mode_req_mission                  # Requires an uploaded mission\n"
-  "bool mode_req_home_position            # Requires a home position (such as RTL/Return mode)\n"
-  "bool mode_req_prevent_arming           # Prevent arming (such as in Land mode)\n"
-  "bool mode_req_manual_control           # Requires a manual controller\n"
+  "bool mode_req_angular_velocity # Requires angular velocity estimate (e.g. from gyroscope)\n"
+  "bool mode_req_attitude # Requires an attitude estimate\n"
+  "bool mode_req_local_alt # Requires a local altitude estimate\n"
+  "bool mode_req_local_position # Requires a local position estimate\n"
+  "bool mode_req_local_position_relaxed # Requires a more relaxed global position estimate\n"
+  "bool mode_req_global_position # Requires a global position estimate\n"
+  "bool mode_req_global_position_relaxed # Requires a relaxed global position estimate\n"
+  "bool mode_req_mission # Requires an uploaded mission\n"
+  "bool mode_req_home_position # Requires a home position (such as RTL/Return mode)\n"
+  "bool mode_req_prevent_arming # Prevent arming (such as in Land mode)\n"
+  "bool mode_req_manual_control # Requires a manual controller\n"
   "\n"
-  "uint8 ORB_QUEUE_LENGTH  = 4";
+  "uint8 ORB_QUEUE_LENGTH = 4";
 
 static char msg_encoding[] = "msg";
 
@@ -359,7 +359,7 @@ px4_msgs__msg__ArmingCheckReply__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__ArmingCheckReply__TYPE_NAME, 29, 29},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 2824, 2824},
+    {toplevel_type_raw_source, 2686, 2686},
   };
   return &source;
 }

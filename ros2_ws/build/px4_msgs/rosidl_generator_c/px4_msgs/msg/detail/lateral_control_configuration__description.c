@@ -78,13 +78,14 @@ px4_msgs__msg__LateralControlConfiguration__get_type_description(
 
 static char toplevel_type_raw_source[] =
   "# Fixed Wing Lateral Control Configuration message\n"
+  "#\n"
   "# Used by the fw_lateral_longitudinal_control module to constrain FixedWingLateralSetpoint messages.\n"
   "\n"
   "uint32 MESSAGE_VERSION = 0\n"
   "\n"
-  "uint64 timestamp          # time since system start (microseconds)\n"
+  "uint64 timestamp # [us] Time since system start\n"
   "\n"
-  "float32 lateral_accel_max # [m/s^2] currently maps to a maximum roll angle, accel_max = tan(roll_max) * GRAVITY";
+  "float32 lateral_accel_max # [m/s^2] Currently maps to a maximum roll angle, accel_max = tan(roll_max) * GRAVITY";
 
 static char msg_encoding[] = "msg";
 
@@ -98,7 +99,7 @@ px4_msgs__msg__LateralControlConfiguration__get_individual_type_description_sour
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__LateralControlConfiguration__TYPE_NAME, 40, 40},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 361, 361},
+    {toplevel_type_raw_source, 344, 344},
   };
   return &source;
 }

@@ -95,11 +95,11 @@ static char toplevel_type_raw_source[] =
   "\n"
   "uint32 MESSAGE_VERSION = 0\n"
   "\n"
-  "uint64 timestamp         # [us] Time since system start\n"
-  "uint64 timestamp_sample  # [us] Sampling timestamp of the data this control response is based on\n"
+  "uint64 timestamp # [us] Time since system start\n"
+  "uint64 timestamp_sample # [us] Sampling timestamp of the data this control response is based on\n"
   "\n"
-  "uint8 NUM_CONTROLS = 8  #\n"
-  "float32[8] control      # [-] [@range -1, 1] Normalized output. 1 means maximum positive position. -1 maximum negative position (if not supported by the output, <0 maps to NaN). NaN maps to disarmed.";
+  "uint8 NUM_CONTROLS = 8\n"
+  "float32[8] control # [-] [@range -1, 1] Normalized output. 1 means maximum positive position. -1 maximum negative position (if not supported by the output, <0 maps to NaN). NaN maps to disarmed.";
 
 static char msg_encoding[] = "msg";
 
@@ -113,7 +113,7 @@ px4_msgs__msg__ActuatorServos__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__ActuatorServos__TYPE_NAME, 27, 27},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 569, 569},
+    {toplevel_type_raw_source, 552, 552},
   };
   return &source;
 }

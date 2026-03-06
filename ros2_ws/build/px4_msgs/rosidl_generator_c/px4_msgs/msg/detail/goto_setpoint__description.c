@@ -166,31 +166,32 @@ px4_msgs__msg__GotoSetpoint__get_type_description(
 
 static char toplevel_type_raw_source[] =
   "# Position and (optional) heading setpoints with corresponding speed constraints\n"
-  "# Setpoints are intended as inputs to position and heading smoothers, respectively\n"
-  "# Setpoints do not need to be kinematically consistent\n"
-  "# Optional heading setpoints may be specified as controlled by the respective flag\n"
-  "# Unset optional setpoints are not controlled\n"
-  "# Unset optional constraints default to vehicle specifications\n"
+  "#\n"
+  "# Setpoints are intended as inputs to position and heading smoothers, respectively.\n"
+  "# Setpoints do not need to be kinematically consistent.\n"
+  "# Optional heading setpoints may be specified as controlled by the respective flag.\n"
+  "# Unset optional setpoints are not controlled.\n"
+  "# Unset optional constraints default to vehicle specifications.\n"
   "\n"
   "uint32 MESSAGE_VERSION = 0\n"
   "\n"
-  "uint64 timestamp # time since system start (microseconds)\n"
+  "uint64 timestamp # [us] Time since system start\n"
   "\n"
   "# setpoints\n"
-  "float32[3] position # [m] NED local world frame\n"
+  "float32[3] position # [m] [@frame NED] NED local world frame\n"
   "\n"
   "bool flag_control_heading # true if heading is to be controlled\n"
   "float32 heading # (optional) [rad] [-pi,pi] from North\n"
   "\n"
   "# constraints\n"
   "bool flag_set_max_horizontal_speed # true if setting a non-default horizontal speed limit\n"
-  "float32 max_horizontal_speed # (optional) [m/s] maximum speed (absolute) in the NE-plane\n"
+  "float32 max_horizontal_speed # [m/s] (optional) Maximum speed (absolute) in the NE-plane\n"
   "\n"
   "bool flag_set_max_vertical_speed # true if setting a non-default vertical speed limit\n"
-  "float32 max_vertical_speed # (optional) [m/s] maximum speed (absolute) in the D-axis\n"
+  "float32 max_vertical_speed # [m/s] (optional) Maximum speed (absolute) in the D-axis\n"
   "\n"
   "bool flag_set_max_heading_rate # true if setting a non-default heading rate limit\n"
-  "float32 max_heading_rate # (optional) [rad/s] maximum heading rate (absolute)";
+  "float32 max_heading_rate # [rad/s] (optional) Maximum heading rate (absolute)";
 
 static char msg_encoding[] = "msg";
 
@@ -204,7 +205,7 @@ px4_msgs__msg__GotoSetpoint__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__GotoSetpoint__TYPE_NAME, 25, 25},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 1206, 1206},
+    {toplevel_type_raw_source, 1216, 1216},
   };
   return &source;
 }

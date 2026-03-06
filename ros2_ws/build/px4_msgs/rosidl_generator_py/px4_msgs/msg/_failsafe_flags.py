@@ -93,6 +93,10 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         '_battery_warning',
         '_battery_low_remaining_time',
         '_battery_unhealthy',
+        '_fd_critical_failure',
+        '_fd_esc_arming_failure',
+        '_fd_imbalanced_prop',
+        '_fd_motor_failure',
         '_geofence_breached',
         '_mission_failure',
         '_vtol_fixed_wing_system_failure',
@@ -100,10 +104,7 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         '_flight_time_limit_exceeded',
         '_position_accuracy_low',
         '_navigator_failure',
-        '_fd_critical_failure',
-        '_fd_esc_arming_failure',
-        '_fd_imbalanced_prop',
-        '_fd_motor_failure',
+        '_parachute_unhealthy',
         '_check_fields',
     ]
 
@@ -139,6 +140,10 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         'battery_warning': 'uint8',
         'battery_low_remaining_time': 'boolean',
         'battery_unhealthy': 'boolean',
+        'fd_critical_failure': 'boolean',
+        'fd_esc_arming_failure': 'boolean',
+        'fd_imbalanced_prop': 'boolean',
+        'fd_motor_failure': 'boolean',
         'geofence_breached': 'boolean',
         'mission_failure': 'boolean',
         'vtol_fixed_wing_system_failure': 'boolean',
@@ -146,10 +151,7 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         'flight_time_limit_exceeded': 'boolean',
         'position_accuracy_low': 'boolean',
         'navigator_failure': 'boolean',
-        'fd_critical_failure': 'boolean',
-        'fd_esc_arming_failure': 'boolean',
-        'fd_imbalanced_prop': 'boolean',
-        'fd_motor_failure': 'boolean',
+        'parachute_unhealthy': 'boolean',
     }
 
     # This attribute is used to store an rosidl_parser.definition variable
@@ -184,6 +186,7 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
@@ -239,6 +242,10 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         self.battery_warning = kwargs.get('battery_warning', int())
         self.battery_low_remaining_time = kwargs.get('battery_low_remaining_time', bool())
         self.battery_unhealthy = kwargs.get('battery_unhealthy', bool())
+        self.fd_critical_failure = kwargs.get('fd_critical_failure', bool())
+        self.fd_esc_arming_failure = kwargs.get('fd_esc_arming_failure', bool())
+        self.fd_imbalanced_prop = kwargs.get('fd_imbalanced_prop', bool())
+        self.fd_motor_failure = kwargs.get('fd_motor_failure', bool())
         self.geofence_breached = kwargs.get('geofence_breached', bool())
         self.mission_failure = kwargs.get('mission_failure', bool())
         self.vtol_fixed_wing_system_failure = kwargs.get('vtol_fixed_wing_system_failure', bool())
@@ -246,10 +253,7 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         self.flight_time_limit_exceeded = kwargs.get('flight_time_limit_exceeded', bool())
         self.position_accuracy_low = kwargs.get('position_accuracy_low', bool())
         self.navigator_failure = kwargs.get('navigator_failure', bool())
-        self.fd_critical_failure = kwargs.get('fd_critical_failure', bool())
-        self.fd_esc_arming_failure = kwargs.get('fd_esc_arming_failure', bool())
-        self.fd_imbalanced_prop = kwargs.get('fd_imbalanced_prop', bool())
-        self.fd_motor_failure = kwargs.get('fd_motor_failure', bool())
+        self.parachute_unhealthy = kwargs.get('parachute_unhealthy', bool())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -343,6 +347,14 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
             return False
         if self.battery_unhealthy != other.battery_unhealthy:
             return False
+        if self.fd_critical_failure != other.fd_critical_failure:
+            return False
+        if self.fd_esc_arming_failure != other.fd_esc_arming_failure:
+            return False
+        if self.fd_imbalanced_prop != other.fd_imbalanced_prop:
+            return False
+        if self.fd_motor_failure != other.fd_motor_failure:
+            return False
         if self.geofence_breached != other.geofence_breached:
             return False
         if self.mission_failure != other.mission_failure:
@@ -357,13 +369,7 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
             return False
         if self.navigator_failure != other.navigator_failure:
             return False
-        if self.fd_critical_failure != other.fd_critical_failure:
-            return False
-        if self.fd_esc_arming_failure != other.fd_esc_arming_failure:
-            return False
-        if self.fd_imbalanced_prop != other.fd_imbalanced_prop:
-            return False
-        if self.fd_motor_failure != other.fd_motor_failure:
+        if self.parachute_unhealthy != other.parachute_unhealthy:
             return False
         return True
 
@@ -808,6 +814,58 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         self._battery_unhealthy = value
 
     @builtins.property
+    def fd_critical_failure(self):
+        """Message field 'fd_critical_failure'."""
+        return self._fd_critical_failure
+
+    @fd_critical_failure.setter
+    def fd_critical_failure(self, value):
+        if self._check_fields:
+            assert \
+                isinstance(value, bool), \
+                "The 'fd_critical_failure' field must be of type 'bool'"
+        self._fd_critical_failure = value
+
+    @builtins.property
+    def fd_esc_arming_failure(self):
+        """Message field 'fd_esc_arming_failure'."""
+        return self._fd_esc_arming_failure
+
+    @fd_esc_arming_failure.setter
+    def fd_esc_arming_failure(self, value):
+        if self._check_fields:
+            assert \
+                isinstance(value, bool), \
+                "The 'fd_esc_arming_failure' field must be of type 'bool'"
+        self._fd_esc_arming_failure = value
+
+    @builtins.property
+    def fd_imbalanced_prop(self):
+        """Message field 'fd_imbalanced_prop'."""
+        return self._fd_imbalanced_prop
+
+    @fd_imbalanced_prop.setter
+    def fd_imbalanced_prop(self, value):
+        if self._check_fields:
+            assert \
+                isinstance(value, bool), \
+                "The 'fd_imbalanced_prop' field must be of type 'bool'"
+        self._fd_imbalanced_prop = value
+
+    @builtins.property
+    def fd_motor_failure(self):
+        """Message field 'fd_motor_failure'."""
+        return self._fd_motor_failure
+
+    @fd_motor_failure.setter
+    def fd_motor_failure(self, value):
+        if self._check_fields:
+            assert \
+                isinstance(value, bool), \
+                "The 'fd_motor_failure' field must be of type 'bool'"
+        self._fd_motor_failure = value
+
+    @builtins.property
     def geofence_breached(self):
         """Message field 'geofence_breached'."""
         return self._geofence_breached
@@ -899,53 +957,14 @@ class FailsafeFlags(metaclass=Metaclass_FailsafeFlags):
         self._navigator_failure = value
 
     @builtins.property
-    def fd_critical_failure(self):
-        """Message field 'fd_critical_failure'."""
-        return self._fd_critical_failure
+    def parachute_unhealthy(self):
+        """Message field 'parachute_unhealthy'."""
+        return self._parachute_unhealthy
 
-    @fd_critical_failure.setter
-    def fd_critical_failure(self, value):
+    @parachute_unhealthy.setter
+    def parachute_unhealthy(self, value):
         if self._check_fields:
             assert \
                 isinstance(value, bool), \
-                "The 'fd_critical_failure' field must be of type 'bool'"
-        self._fd_critical_failure = value
-
-    @builtins.property
-    def fd_esc_arming_failure(self):
-        """Message field 'fd_esc_arming_failure'."""
-        return self._fd_esc_arming_failure
-
-    @fd_esc_arming_failure.setter
-    def fd_esc_arming_failure(self, value):
-        if self._check_fields:
-            assert \
-                isinstance(value, bool), \
-                "The 'fd_esc_arming_failure' field must be of type 'bool'"
-        self._fd_esc_arming_failure = value
-
-    @builtins.property
-    def fd_imbalanced_prop(self):
-        """Message field 'fd_imbalanced_prop'."""
-        return self._fd_imbalanced_prop
-
-    @fd_imbalanced_prop.setter
-    def fd_imbalanced_prop(self, value):
-        if self._check_fields:
-            assert \
-                isinstance(value, bool), \
-                "The 'fd_imbalanced_prop' field must be of type 'bool'"
-        self._fd_imbalanced_prop = value
-
-    @builtins.property
-    def fd_motor_failure(self):
-        """Message field 'fd_motor_failure'."""
-        return self._fd_motor_failure
-
-    @fd_motor_failure.setter
-    def fd_motor_failure(self, value):
-        if self._check_fields:
-            assert \
-                isinstance(value, bool), \
-                "The 'fd_motor_failure' field must be of type 'bool'"
-        self._fd_motor_failure = value
+                "The 'parachute_unhealthy' field must be of type 'bool'"
+        self._parachute_unhealthy = value

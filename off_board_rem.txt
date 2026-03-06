@@ -12,6 +12,9 @@ colcon build --symlink-install
 
 T3 (Bridge):
 MicroXRCEAgent udp4 -p 8888
+or
+micro-xrce-dds-agent udp4 -p 8888
+
 
 checks:
 ros2 topic info /fmu/in/offboard_control_mode
@@ -22,3 +25,8 @@ Launch QGrounControl*
 
 commander arm
 commander mode offboard (code handles movement, etc.)
+
+
+
+ros2 run ros_gz_bridge parameter_bridge /model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos@std_msgs/msg/Float64@gz.msgs.Double
+

@@ -1,1 +1,1 @@
-/home/sandhm1/Drone-Autonomy/ros2_ws/src/px4_msgs/msg/VehicleLocalPosition.msg
+/home/sandhm1/drone-autonomy/ros2_ws/src/px4_msgs/msg/VehicleLocalPosition.msg
