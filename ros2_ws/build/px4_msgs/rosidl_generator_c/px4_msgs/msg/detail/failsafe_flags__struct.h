@@ -83,15 +83,6 @@ typedef struct px4_msgs__msg__FailsafeFlags
   bool battery_low_remaining_time;
   /// Battery unhealthy
   bool battery_unhealthy;
-  /// Failure detector
-  /// Critical failure (attitude/altitude limit exceeded, or external ATS)
-  bool fd_critical_failure;
-  /// ESC failed to arm
-  bool fd_esc_arming_failure;
-  /// Imbalanced propeller detected
-  bool fd_imbalanced_prop;
-  /// Motor failure
-  bool fd_motor_failure;
   /// Other
   /// Geofence breached (one or multiple)
   bool geofence_breached;
@@ -107,8 +98,15 @@ typedef struct px4_msgs__msg__FailsafeFlags
   bool position_accuracy_low;
   /// Navigator failed to execute a mode
   bool navigator_failure;
-  /// Parachute system missing or unhealthy
-  bool parachute_unhealthy;
+  /// Failure detector
+  /// Critical failure (attitude/altitude limit exceeded, or external ATS)
+  bool fd_critical_failure;
+  /// ESC failed to arm
+  bool fd_esc_arming_failure;
+  /// Imbalanced propeller detected
+  bool fd_imbalanced_prop;
+  /// Motor failure
+  bool fd_motor_failure;
 } px4_msgs__msg__FailsafeFlags;
 
 // Struct for a sequence of px4_msgs__msg__FailsafeFlags.

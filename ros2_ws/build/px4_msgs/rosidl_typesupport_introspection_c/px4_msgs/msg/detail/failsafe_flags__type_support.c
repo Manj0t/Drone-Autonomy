@@ -31,7 +31,7 @@ void px4_msgs__msg__FailsafeFlags__rosidl_typesupport_introspection_c__FailsafeF
   px4_msgs__msg__FailsafeFlags__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember px4_msgs__msg__FailsafeFlags__rosidl_typesupport_introspection_c__FailsafeFlags_message_member_array[43] = {
+static rosidl_typesupport_introspection_c__MessageMember px4_msgs__msg__FailsafeFlags__rosidl_typesupport_introspection_c__FailsafeFlags_message_member_array[42] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -591,78 +591,6 @@ static rosidl_typesupport_introspection_c__MessageMember px4_msgs__msg__Failsafe
     NULL  // resize(index) function pointer
   },
   {
-    "fd_critical_failure",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is key
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__FailsafeFlags, fd_critical_failure),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "fd_esc_arming_failure",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is key
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__FailsafeFlags, fd_esc_arming_failure),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "fd_imbalanced_prop",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is key
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__FailsafeFlags, fd_imbalanced_prop),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "fd_motor_failure",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is key
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__FailsafeFlags, fd_motor_failure),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "geofence_breached",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
@@ -789,7 +717,7 @@ static rosidl_typesupport_introspection_c__MessageMember px4_msgs__msg__Failsafe
     NULL  // resize(index) function pointer
   },
   {
-    "parachute_unhealthy",  // name
+    "fd_critical_failure",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
@@ -797,7 +725,61 @@ static rosidl_typesupport_introspection_c__MessageMember px4_msgs__msg__Failsafe
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__FailsafeFlags, parachute_unhealthy),  // bytes offset in struct
+    offsetof(px4_msgs__msg__FailsafeFlags, fd_critical_failure),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "fd_esc_arming_failure",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is key
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__FailsafeFlags, fd_esc_arming_failure),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "fd_imbalanced_prop",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is key
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__FailsafeFlags, fd_imbalanced_prop),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "fd_motor_failure",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is key
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__FailsafeFlags, fd_motor_failure),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -811,7 +793,7 @@ static rosidl_typesupport_introspection_c__MessageMember px4_msgs__msg__Failsafe
 static const rosidl_typesupport_introspection_c__MessageMembers px4_msgs__msg__FailsafeFlags__rosidl_typesupport_introspection_c__FailsafeFlags_message_members = {
   "px4_msgs__msg",  // message namespace
   "FailsafeFlags",  // message name
-  43,  // number of fields
+  42,  // number of fields
   sizeof(px4_msgs__msg__FailsafeFlags),
   false,  // has_any_key_member_
   px4_msgs__msg__FailsafeFlags__rosidl_typesupport_introspection_c__FailsafeFlags_message_member_array,  // message members

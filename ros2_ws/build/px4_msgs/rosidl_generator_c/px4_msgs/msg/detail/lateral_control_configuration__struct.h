@@ -28,14 +28,13 @@ enum
 /// Struct defined in msg/LateralControlConfiguration in the package px4_msgs.
 /**
   * Fixed Wing Lateral Control Configuration message
-  *
   * Used by the fw_lateral_longitudinal_control module to constrain FixedWingLateralSetpoint messages.
  */
 typedef struct px4_msgs__msg__LateralControlConfiguration
 {
-  /// Time since system start
+  /// time since system start (microseconds)
   uint64_t timestamp;
-  /// Currently maps to a maximum roll angle, accel_max = tan(roll_max) * GRAVITY
+  /// currently maps to a maximum roll angle, accel_max = tan(roll_max) * GRAVITY
   float lateral_accel_max;
 } px4_msgs__msg__LateralControlConfiguration;
 

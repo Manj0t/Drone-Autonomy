@@ -122,20 +122,19 @@ px4_msgs__msg__FixedWingLongitudinalSetpoint__get_type_description(
 
 static char toplevel_type_raw_source[] =
   "# Fixed Wing Longitudinal Setpoint message\n"
-  "#\n"
   "# Used by the fw_lateral_longitudinal_control module\n"
   "# If pitch_direct and throttle_direct are not both finite, then the controller relies on altitude/height_rate and equivalent_airspeed to control vertical motion.\n"
   "# If both altitude and height_rate are NAN, the controller maintains the current altitude.\n"
   "\n"
   "uint32 MESSAGE_VERSION = 0\n"
   "\n"
-  "uint64 timestamp # [us] Time since system start\n"
+  "uint64 timestamp                        # time since system start (microseconds)\n"
   "\n"
-  "float32 altitude # [m] Altitude setpoint AMSL, not controlled directly if NAN or if height_rate is finite\n"
-  "float32 height_rate # [m/s] [@frame ENU] Scalar height rate setpoint. NAN if not controlled directly\n"
-  "float32 equivalent_airspeed # [m/s] [@range 0, inf] Scalar equivalent airspeed setpoint. NAN if system default should be used\n"
-  "float32 pitch_direct # [rad] [@range -pi, pi] [@frame FRD] NAN if not controlled, overrides total energy controller\n"
-  "float32 throttle_direct # [norm] [@range 0,1] NAN if not controlled, overrides total energy controller";
+  "float32 altitude  \\t\\t\\t# [m] Altitude setpoint AMSL, not controlled directly if NAN or if height_rate is finite\n"
+  "float32 height_rate \\t\\t\\t# [m/s] [ENU] Scalar height rate setpoint. NAN if not controlled directly\n"
+  "float32 equivalent_airspeed \\t\\t# [m/s] [@range 0, inf] Scalar equivalent airspeed setpoint. NAN if system default should be used\n"
+  "float32 pitch_direct \\t\\t\\t# [rad] [@range -pi, pi] [FRD] NAN if not controlled, overrides total energy controller\n"
+  "float32 throttle_direct \\t\\t# [norm] [@range 0,1] NAN if not controlled, overrides total energy controller";
 
 static char msg_encoding[] = "msg";
 
@@ -149,7 +148,7 @@ px4_msgs__msg__FixedWingLongitudinalSetpoint__get_individual_type_description_so
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__FixedWingLongitudinalSetpoint__TYPE_NAME, 42, 42},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 981, 981},
+    {toplevel_type_raw_source, 1012, 1012},
   };
   return &source;
 }

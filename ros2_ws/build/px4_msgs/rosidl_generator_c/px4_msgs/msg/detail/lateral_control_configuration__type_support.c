@@ -4,8 +4,8 @@
 
 #include <string.h>
 
-#include "px4_msgs/msg/detail/lateral_control_configuration__struct.h"
 #include "px4_msgs/msg/detail/lateral_control_configuration__type_support.h"
+#include "px4_msgs/msg/detail/lateral_control_configuration__struct.h"
 #include "px4_msgs/msg/detail/lateral_control_configuration__functions.h"
 #include "rosidl_typesupport_interface/macros.h"
 

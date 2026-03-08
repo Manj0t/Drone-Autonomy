@@ -100,17 +100,16 @@ px4_msgs__msg__FixedWingLateralSetpoint__get_type_description(
 
 static char toplevel_type_raw_source[] =
   "# Fixed Wing Lateral Setpoint message\n"
-  "#\n"
   "# Used by the fw_lateral_longitudinal_control module\n"
   "# At least one of course, airspeed_direction, or lateral_acceleration must be finite.\n"
   "\n"
   "uint32 MESSAGE_VERSION = 0\n"
   "\n"
-  "uint64 timestamp # [us] Time since system start\n"
+  "uint64 timestamp                        # time since system start (microseconds)\n"
   "\n"
-  "float32 course # [rad] [@range -pi, pi] Desired direction of travel over ground w.r.t (true) North. NAN if not controlled directly.\n"
-  "float32 airspeed_direction # [rad] [@range -pi, pi] Desired horizontal angle of airspeed vector w.r.t. (true) North. Same as vehicle heading if in the absence of sideslip. NAN if not controlled directly, takes precedence over course if finite.\n"
-  "float32 lateral_acceleration # [m/s^2] [@frame FRD] Lateral acceleration setpoint. NAN if not controlled directly, used as feedforward if either course setpoint or airspeed_direction is finite.";
+  "float32 course \\t\\t\\t\\t# [rad] [@range -pi, pi] Desired direction of travel over ground w.r.t (true) North. NAN if not controlled directly.\n"
+  "float32 airspeed_direction    \\t\\t# [rad] [@range -pi, pi] Desired horizontal angle of airspeed vector w.r.t. (true) North. Same as vehicle heading if in the absence of sideslip. NAN if not controlled directly, takes precedence over course if finite.\n"
+  "float32 lateral_acceleration \\t\\t# [m/s^2] [FRD] Lateral acceleration setpoint. NAN if not controlled directly, used as feedforward if either course setpoint or airspeed_direction is finite.";
 
 static char msg_encoding[] = "msg";
 
@@ -124,7 +123,7 @@ px4_msgs__msg__FixedWingLateralSetpoint__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__FixedWingLateralSetpoint__TYPE_NAME, 37, 37},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 827, 827},
+    {toplevel_type_raw_source, 862, 862},
   };
   return &source;
 }

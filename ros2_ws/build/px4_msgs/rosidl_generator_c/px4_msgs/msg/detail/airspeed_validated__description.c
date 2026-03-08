@@ -170,27 +170,28 @@ static char toplevel_type_raw_source[] =
   "# Provides information about airspeed (indicated, true, calibrated) and the source of the data.\n"
   "# Used by controllers, estimators and for airspeed reporting to operator.\n"
   "\n"
+  "\n"
   "uint32 MESSAGE_VERSION = 1\n"
   "\n"
-  "uint64 timestamp # [us] Time since system start\n"
+  "uint64 timestamp  # [us] Time since system start\n"
   "\n"
-  "float32 indicated_airspeed_m_s # [m/s] [@invalid NaN] Indicated airspeed (IAS)\n"
-  "float32 calibrated_airspeed_m_s # [m/s] [@invalid NaN] Calibrated airspeed (CAS)\n"
-  "float32 true_airspeed_m_s # [m/s] [@invalid NaN] True airspeed (TAS)\n"
+  "float32 indicated_airspeed_m_s   # [m/s] [@invalid NaN] Indicated airspeed (IAS)\n"
+  "float32 calibrated_airspeed_m_s  # [m/s] [@invalid NaN] Calibrated airspeed (CAS)\n"
+  "float32 true_airspeed_m_s        # [m/s] [@invalid NaN] True airspeed (TAS)\n"
   "\n"
-  "int8 airspeed_source # [@enum SOURCE] Source of currently published airspeed values\n"
-  "int8 SOURCE_DISABLED = -1 # Disabled\n"
-  "int8 SOURCE_GROUND_MINUS_WIND = 0 # Ground speed minus wind\n"
-  "int8 SOURCE_SENSOR_1 = 1 # Sensor 1\n"
-  "int8 SOURCE_SENSOR_2 = 2 # Sensor 2\n"
-  "int8 SOURCE_SENSOR_3 = 3 # Sensor 3\n"
-  "int8 SOURCE_SYNTHETIC = 4 # Synthetic airspeed\n"
+  "int8 airspeed_source               # [@enum SOURCE] Source of currently published airspeed values\n"
+  "int8 SOURCE_DISABLED = -1          # Disabled\n"
+  "int8 SOURCE_GROUND_MINUS_WIND = 0  # Ground speed minus wind\n"
+  "int8 SOURCE_SENSOR_1 = 1           # Sensor 1\n"
+  "int8 SOURCE_SENSOR_2 = 2           # Sensor 2\n"
+  "int8 SOURCE_SENSOR_3 = 3           # Sensor 3\n"
+  "int8 SOURCE_SYNTHETIC = 4          # Synthetic airspeed \n"
   "\n"
-  "float32 calibrated_ground_minus_wind_m_s # [m/s] [@invalid NaN] CAS calculated from groundspeed - windspeed, where windspeed is estimated based on a zero-sideslip assumption\n"
-  "float32 calibraded_airspeed_synth_m_s # [m/s] [@invalid NaN] Synthetic airspeed\n"
-  "float32 airspeed_derivative_filtered # [m/s^2] Filtered indicated airspeed derivative\n"
-  "float32 throttle_filtered # [-] Filtered fixed-wing throttle\n"
-  "float32 pitch_filtered # [rad] Filtered pitch";
+  "float32 calibrated_ground_minus_wind_m_s  # [m/s] [@invalid NaN] CAS calculated from groundspeed - windspeed, where windspeed is estimated based on a zero-sideslip assumption\n"
+  "float32 calibraded_airspeed_synth_m_s     # [m/s] [@invalid NaN] Synthetic airspeed\n"
+  "float32 airspeed_derivative_filtered      # [m/s^2] Filtered indicated airspeed derivative \n"
+  "float32 throttle_filtered                 # [-] Filtered fixed-wing throttle \n"
+  "float32 pitch_filtered                    # [rad] Filtered pitch ";
 
 static char msg_encoding[] = "msg";
 
@@ -204,7 +205,7 @@ px4_msgs__msg__AirspeedValidated__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__AirspeedValidated__TYPE_NAME, 30, 30},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 1285, 1285},
+    {toplevel_type_raw_source, 1409, 1409},
   };
   return &source;
 }

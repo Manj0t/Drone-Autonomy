@@ -8,6 +8,10 @@ import math
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
 
+from std_msgs.msg import Float64
+
+MAX_POINTS = 100000
+
 class ScanPrinter(Node):
     def __init__(self):
         super().__init__('scan_printer')
@@ -17,53 +21,76 @@ class ScanPrinter(Node):
             self.on_scan,
             10
         )
+        self.create_subscription(
+            Float64,
+            "/model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos",
+            self.on_pitch,
+            10
+        )
+
+        self.current_pitch = 0.0
         self.marker_pub = self.create_publisher(Marker, 'lidar_points', 10) # Create Publisher for RVIZ to subscribe to
         self.fov_pub = self.create_publisher(Marker, 'lidar_fov', 10)
 
-    def on_scan(self, msg):
-        marker = Marker()
-        marker.header.frame_id = 'link'
-        marker.header.stamp = self.get_clock().now().to_msg() # Not entirely sure why
+
+        self.marker = Marker()
+        self.marker.header.frame_id = 'world'
         # Tell RVIZ how to map these points
-        marker.type = Marker.POINTS
+        self.marker.type = Marker.POINTS
 
         # Unique identifiers
-        marker.action = Marker.ADD
-        marker.ns = "lidar"
-        marker.id = 0
+        self.marker.action = Marker.ADD
+        self.marker.ns = "lidar"
+        self.marker.id = 0
 
-        marker.pose.orientation.w = 1.0  # orientation
+        self.marker.pose.orientation.w = 1.0  # orientation
 
         # RGB
-        marker.color.r = 1.0
-        marker.color.g = 1.0
-        marker.color.b = 1.0
-        marker.color.a = 1.0  # Opacity
+        self.marker.color.r = 1.0
+        self.marker.color.g = 1.0
+        self.marker.color.b = 1.0
+        self.marker.color.a = 1.0  # Opacity
 
         # Point size (0.3 == 3cm)
-        marker.scale.x = 0.01
-        marker.scale.y = 0.01
+        self.marker.scale.x = 0.01
+        self.marker.scale.y = 0.01
+    
+    def on_pitch(self, msg):
+        self.current_pitch = msg.data
 
+    def on_scan(self, msg):
+        self.marker.header.stamp = self.get_clock().now().to_msg() # Not entirely sure why
+
+        theta = self.current_pitch
         angle = msg.angle_min
+
         for r in msg.ranges:
             # If no object is hit, don't map
             if math.isfinite(r):
                 p = Point()
+
                 # Map to cartesian points
-                p.x = r * math.cos(angle)
-                p.y = r * math.sin(angle)
-                p.z = 0.0
-                marker.points.append(p)
+                x = r * math.cos(angle)
+                y = r * math.sin(angle)
+
+                p.x = x
+                p.y = y
+                p.z = x * math.sin(theta)
+                self.marker.points.append(p)
+                self.get_logger().info(f"angle={angle:.3f}, r={r:.3f}, x={x:.3f}, y={y:.3f}")
+
+                if len(self.marker.points) > MAX_POINTS:
+                    self.marker.points.pop(0)           # Not a deque, O(N)
 
             angle += msg.angle_increment
 
         # Publish points for RVIZ
-        self.marker_pub.publish(marker)
+        self.marker_pub.publish(self.marker)
 
 
         # temp
         m = Marker()
-        m.header.frame_id = msg.header.frame_id or "link"
+        m.header.frame_id = "world" # msg.header.frame_id or "
         m.header.stamp = self.get_clock().now().to_msg()
         m.ns = "lidar"
         m.id = 1

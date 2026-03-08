@@ -106,15 +106,15 @@ static char toplevel_type_raw_source[] =
   "\n"
   "uint32 MESSAGE_VERSION = 0\n"
   "\n"
-  "uint64 timestamp # [us] Time since system start\n"
-  "uint64 timestamp_sample # [us] Sampling timestamp of the data this control response is based on\n"
+  "uint64 timestamp         # [us] Time since system start\n"
+  "uint64 timestamp_sample  # [us] Sampling timestamp of the data this control response is based on\n"
   "\n"
-  "uint16 reversible_flags # [-] Bitset indicating which motors are configured to be reversible\n"
+  "uint16 reversible_flags  # [-] Bitset indicating which motors are configured to be reversible\n"
   "\n"
-  "uint8 ACTUATOR_FUNCTION_MOTOR1 = 101\n"
+  "uint8 ACTUATOR_FUNCTION_MOTOR1 = 101 #\n"
   "\n"
-  "uint8 NUM_CONTROLS = 12\n"
-  "float32[12] control # [@range -1, 1] Normalized thrust. Where 1 means maximum positive thrust, -1 maximum negative (if not supported by the output, <0 maps to NaN). NaN maps to disarmed (stop the motors)";
+  "uint8 NUM_CONTROLS = 12  #\n"
+  "float32[12] control      # [@range -1, 1] Normalized thrust. where 1 means maximum positive thrust, -1 maximum negative (if not supported by the output, <0 maps to NaN). NaN maps to disarmed (stop the motors)";
 
 static char msg_encoding[] = "msg";
 
@@ -128,7 +128,7 @@ px4_msgs__msg__ActuatorMotors__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__ActuatorMotors__TYPE_NAME, 27, 27},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 716, 716},
+    {toplevel_type_raw_source, 736, 736},
   };
   return &source;
 }

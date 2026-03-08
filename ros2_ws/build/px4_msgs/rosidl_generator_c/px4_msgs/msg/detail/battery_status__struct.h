@@ -258,7 +258,7 @@ typedef struct px4_msgs__msg__BatteryStatus
   float scale;
   /// [s] [@invalid NaN] Predicted time remaining until battery is empty under previous averaged load
   float time_remaining_s;
-  /// [degC] [@invalid NaN] Temperature of the battery
+  /// [°C] [@invalid NaN] Temperature of the battery
   float temperature;
   /// [-] [@invalid 0] Number of cells
   uint8_t cell_count;

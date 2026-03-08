@@ -314,46 +314,6 @@
           "default_value": ""
         },
         {
-          "name": "fd_critical_failure",
-          "type": {
-            "type_id": 15,
-            "capacity": 0,
-            "string_capacity": 0,
-            "nested_type_name": ""
-          },
-          "default_value": ""
-        },
-        {
-          "name": "fd_esc_arming_failure",
-          "type": {
-            "type_id": 15,
-            "capacity": 0,
-            "string_capacity": 0,
-            "nested_type_name": ""
-          },
-          "default_value": ""
-        },
-        {
-          "name": "fd_imbalanced_prop",
-          "type": {
-            "type_id": 15,
-            "capacity": 0,
-            "string_capacity": 0,
-            "nested_type_name": ""
-          },
-          "default_value": ""
-        },
-        {
-          "name": "fd_motor_failure",
-          "type": {
-            "type_id": 15,
-            "capacity": 0,
-            "string_capacity": 0,
-            "nested_type_name": ""
-          },
-          "default_value": ""
-        },
-        {
           "name": "geofence_breached",
           "type": {
             "type_id": 15,
@@ -424,7 +384,37 @@
           "default_value": ""
         },
         {
-          "name": "parachute_unhealthy",
+          "name": "fd_critical_failure",
+          "type": {
+            "type_id": 15,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "fd_esc_arming_failure",
+          "type": {
+            "type_id": 15,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "fd_imbalanced_prop",
+          "type": {
+            "type_id": 15,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "fd_motor_failure",
           "type": {
             "type_id": 15,
             "capacity": 0,
@@ -440,7 +430,7 @@
   "type_hashes": [
     {
       "type_name": "px4_msgs/msg/FailsafeFlags",
-      "hash_string": "RIHS01_a282bde24d2edbb0d72172e0068098c2908e980de9b305ee741866250b334a6b"
+      "hash_string": "RIHS01_ddcab52d172610c368dffcd0eb2c372dd5e64ca1b49b02afcdef19e2c494e69d"
     }
   ]
 }

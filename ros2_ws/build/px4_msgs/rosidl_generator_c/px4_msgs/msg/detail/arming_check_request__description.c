@@ -99,9 +99,9 @@ static char toplevel_type_raw_source[] =
   "\n"
   "uint32 MESSAGE_VERSION = 1\n"
   "\n"
-  "uint64 timestamp # [us] Time since system start\n"
+  "uint64 timestamp  # [us] Time since system start\n"
   "\n"
-  "uint8 request_id # [-] Id of this request. Allows correlation with associated ArmingCheckReply messages.\n"
+  "uint8 request_id  # [-] Id of this request. Allows correlation with associated ArmingCheckReply messages.\n"
   "\n"
   "uint32 valid_registrations_mask # [-] Bitmask of valid registration ID's (the bit is also cleared if flagged as unresponsive)";
 
@@ -117,7 +117,7 @@ px4_msgs__msg__ArmingCheckRequest__get_individual_type_description_source(
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__ArmingCheckRequest__TYPE_NAME, 31, 31},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 1074, 1074},
+    {toplevel_type_raw_source, 1076, 1076},
   };
   return &source;
 }

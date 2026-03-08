@@ -24,16 +24,64 @@ namespace msg
 namespace builder
 {
 
-class Init_FailsafeFlags_parachute_unhealthy
+class Init_FailsafeFlags_fd_motor_failure
 {
 public:
-  explicit Init_FailsafeFlags_parachute_unhealthy(::px4_msgs::msg::FailsafeFlags & msg)
+  explicit Init_FailsafeFlags_fd_motor_failure(::px4_msgs::msg::FailsafeFlags & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::FailsafeFlags parachute_unhealthy(::px4_msgs::msg::FailsafeFlags::_parachute_unhealthy_type arg)
+  ::px4_msgs::msg::FailsafeFlags fd_motor_failure(::px4_msgs::msg::FailsafeFlags::_fd_motor_failure_type arg)
   {
-    msg_.parachute_unhealthy = std::move(arg);
+    msg_.fd_motor_failure = std::move(arg);
     return std::move(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::FailsafeFlags msg_;
+};
+
+class Init_FailsafeFlags_fd_imbalanced_prop
+{
+public:
+  explicit Init_FailsafeFlags_fd_imbalanced_prop(::px4_msgs::msg::FailsafeFlags & msg)
+  : msg_(msg)
+  {}
+  Init_FailsafeFlags_fd_motor_failure fd_imbalanced_prop(::px4_msgs::msg::FailsafeFlags::_fd_imbalanced_prop_type arg)
+  {
+    msg_.fd_imbalanced_prop = std::move(arg);
+    return Init_FailsafeFlags_fd_motor_failure(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::FailsafeFlags msg_;
+};
+
+class Init_FailsafeFlags_fd_esc_arming_failure
+{
+public:
+  explicit Init_FailsafeFlags_fd_esc_arming_failure(::px4_msgs::msg::FailsafeFlags & msg)
+  : msg_(msg)
+  {}
+  Init_FailsafeFlags_fd_imbalanced_prop fd_esc_arming_failure(::px4_msgs::msg::FailsafeFlags::_fd_esc_arming_failure_type arg)
+  {
+    msg_.fd_esc_arming_failure = std::move(arg);
+    return Init_FailsafeFlags_fd_imbalanced_prop(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::FailsafeFlags msg_;
+};
+
+class Init_FailsafeFlags_fd_critical_failure
+{
+public:
+  explicit Init_FailsafeFlags_fd_critical_failure(::px4_msgs::msg::FailsafeFlags & msg)
+  : msg_(msg)
+  {}
+  Init_FailsafeFlags_fd_esc_arming_failure fd_critical_failure(::px4_msgs::msg::FailsafeFlags::_fd_critical_failure_type arg)
+  {
+    msg_.fd_critical_failure = std::move(arg);
+    return Init_FailsafeFlags_fd_esc_arming_failure(msg_);
   }
 
 private:
@@ -46,10 +94,10 @@ public:
   explicit Init_FailsafeFlags_navigator_failure(::px4_msgs::msg::FailsafeFlags & msg)
   : msg_(msg)
   {}
-  Init_FailsafeFlags_parachute_unhealthy navigator_failure(::px4_msgs::msg::FailsafeFlags::_navigator_failure_type arg)
+  Init_FailsafeFlags_fd_critical_failure navigator_failure(::px4_msgs::msg::FailsafeFlags::_navigator_failure_type arg)
   {
     msg_.navigator_failure = std::move(arg);
-    return Init_FailsafeFlags_parachute_unhealthy(msg_);
+    return Init_FailsafeFlags_fd_critical_failure(msg_);
   }
 
 private:
@@ -152,80 +200,16 @@ private:
   ::px4_msgs::msg::FailsafeFlags msg_;
 };
 
-class Init_FailsafeFlags_fd_motor_failure
-{
-public:
-  explicit Init_FailsafeFlags_fd_motor_failure(::px4_msgs::msg::FailsafeFlags & msg)
-  : msg_(msg)
-  {}
-  Init_FailsafeFlags_geofence_breached fd_motor_failure(::px4_msgs::msg::FailsafeFlags::_fd_motor_failure_type arg)
-  {
-    msg_.fd_motor_failure = std::move(arg);
-    return Init_FailsafeFlags_geofence_breached(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::FailsafeFlags msg_;
-};
-
-class Init_FailsafeFlags_fd_imbalanced_prop
-{
-public:
-  explicit Init_FailsafeFlags_fd_imbalanced_prop(::px4_msgs::msg::FailsafeFlags & msg)
-  : msg_(msg)
-  {}
-  Init_FailsafeFlags_fd_motor_failure fd_imbalanced_prop(::px4_msgs::msg::FailsafeFlags::_fd_imbalanced_prop_type arg)
-  {
-    msg_.fd_imbalanced_prop = std::move(arg);
-    return Init_FailsafeFlags_fd_motor_failure(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::FailsafeFlags msg_;
-};
-
-class Init_FailsafeFlags_fd_esc_arming_failure
-{
-public:
-  explicit Init_FailsafeFlags_fd_esc_arming_failure(::px4_msgs::msg::FailsafeFlags & msg)
-  : msg_(msg)
-  {}
-  Init_FailsafeFlags_fd_imbalanced_prop fd_esc_arming_failure(::px4_msgs::msg::FailsafeFlags::_fd_esc_arming_failure_type arg)
-  {
-    msg_.fd_esc_arming_failure = std::move(arg);
-    return Init_FailsafeFlags_fd_imbalanced_prop(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::FailsafeFlags msg_;
-};
-
-class Init_FailsafeFlags_fd_critical_failure
-{
-public:
-  explicit Init_FailsafeFlags_fd_critical_failure(::px4_msgs::msg::FailsafeFlags & msg)
-  : msg_(msg)
-  {}
-  Init_FailsafeFlags_fd_esc_arming_failure fd_critical_failure(::px4_msgs::msg::FailsafeFlags::_fd_critical_failure_type arg)
-  {
-    msg_.fd_critical_failure = std::move(arg);
-    return Init_FailsafeFlags_fd_esc_arming_failure(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::FailsafeFlags msg_;
-};
-
 class Init_FailsafeFlags_battery_unhealthy
 {
 public:
   explicit Init_FailsafeFlags_battery_unhealthy(::px4_msgs::msg::FailsafeFlags & msg)
   : msg_(msg)
   {}
-  Init_FailsafeFlags_fd_critical_failure battery_unhealthy(::px4_msgs::msg::FailsafeFlags::_battery_unhealthy_type arg)
+  Init_FailsafeFlags_geofence_breached battery_unhealthy(::px4_msgs::msg::FailsafeFlags::_battery_unhealthy_type arg)
   {
     msg_.battery_unhealthy = std::move(arg);
-    return Init_FailsafeFlags_fd_critical_failure(msg_);
+    return Init_FailsafeFlags_geofence_breached(msg_);
   }
 
 private:

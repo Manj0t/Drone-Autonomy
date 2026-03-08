@@ -166,23 +166,22 @@ px4_msgs__msg__LongitudinalControlConfiguration__get_type_description(
 
 static char toplevel_type_raw_source[] =
   "# Fixed Wing Longitudinal Control Configuration message\n"
-  "#\n"
   "# Used by the fw_lateral_longitudinal_control module and TECS to constrain FixedWingLongitudinalSetpoint messages\n"
   "# and configure the resultant setpoints.\n"
   "\n"
   "uint32 MESSAGE_VERSION = 0\n"
   "\n"
-  "uint64 timestamp # [us] Time since system start\n"
+  "uint64 timestamp                        # time since system start (microseconds)\n"
   "\n"
-  "float32 pitch_min # [rad] [@range -pi, pi] Defaults to FW_P_LIM_MIN if NAN.\n"
-  "float32 pitch_max # [rad] [@range -pi, pi] Defaults to FW_P_LIM_MAX if NAN.\n"
-  "float32 throttle_min # [norm] [@range 0,1] Defaults to FW_THR_MIN if NAN.\n"
-  "float32 throttle_max # [norm] [@range 0,1] Defaults to FW_THR_MAX if NAN.\n"
-  "float32 climb_rate_target # [m/s] Target climbrate to change altitude. Defaults to FW_T_CLIMB_MAX if NAN. Not used if height_rate is directly set in FixedWingLongitudinalSetpoint.\n"
-  "float32 sink_rate_target # [m/s] Target sinkrate to change altitude. Defaults to FW_T_SINK_MAX if NAN. Not used if height_rate is directly set in FixedWingLongitudinalSetpoint.\n"
-  "float32 speed_weight # [-] [@range 0,2] 0=pitch controls altitude only, 2=pitch controls airspeed only\n"
-  "bool enforce_low_height_condition # If true, the altitude controller is configured with an alternative timeconstant for tighter altitude tracking\n"
-  "bool disable_underspeed_protection # If true, underspeed handling is disabled in the altitude controller";
+  "float32 pitch_min   \\t\\t\\t# [rad][@range -pi, pi] defaults to FW_P_LIM_MIN if NAN.\n"
+  "float32 pitch_max   \\t\\t\\t# [rad][@range -pi, pi] defaults to FW_P_LIM_MAX if NAN.\n"
+  "float32 throttle_min \\t\\t\\t# [norm] [@range 0,1] deaults to FW_THR_MIN if NAN.\n"
+  "float32 throttle_max \\t\\t\\t# [norm] [@range 0,1] defaults to FW_THR_MAX if NAN.\n"
+  "float32 climb_rate_target \\t\\t# [m/s] target climbrate to change altitude. Defaults to FW_T_CLIMB_MAX if NAN. Not used if height_rate is directly set in FixedWingLongitudinalSetpoint.\n"
+  "float32 sink_rate_target \\t\\t# [m/s] target sinkrate to change altitude. Defaults to FW_T_SINK_MAX if NAN. Not used if height_rate is directly set in FixedWingLongitudinalSetpoint.\n"
+  "float32 speed_weight \\t\\t\\t# [@range 0,2], 0=pitch controls altitude only, 2=pitch controls airspeed only\n"
+  "bool enforce_low_height_condition \\t# [boolean] if true, the altitude controller is configured with an alternative timeconstant for tighter altitude tracking\n"
+  "bool disable_underspeed_protection \\t# [boolean] if true, underspeed handling is disabled in the altitude controller";
 
 static char msg_encoding[] = "msg";
 
@@ -196,7 +195,7 @@ px4_msgs__msg__LongitudinalControlConfiguration__get_individual_type_description
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {px4_msgs__msg__LongitudinalControlConfiguration__TYPE_NAME, 45, 45},
     {msg_encoding, 3, 3},
-    {toplevel_type_raw_source, 1302, 1302},
+    {toplevel_type_raw_source, 1372, 1372},
   };
   return &source;
 }
