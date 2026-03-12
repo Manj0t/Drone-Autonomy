@@ -34,8 +34,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.6</lower>
-          <upper>0.6</upper>
+          <lower>-0.8</lower>
+          <upper>1.6</upper>
           <effort>5.0</effort>
           <velocity>8.0</velocity>
         </limit>

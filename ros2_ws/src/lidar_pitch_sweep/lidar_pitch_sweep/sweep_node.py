@@ -7,10 +7,12 @@ from std_msgs.msg import Float64
 
 TOPIC = "/model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos"
 
+PI = math.pi
+
 PUB_HZ = 200
-AMP_RAD = 1
+AMP_RAD = PI / 2
 FREQ_HZ = 1.0
-PHI = math.pi / 2
+PHI = PI / 2
 
 class LidarPitchSweep(Node):
     def __init__(self):
@@ -33,7 +35,7 @@ class LidarPitchSweep(Node):
         t = t1 - self.t0
         period = 1 / FREQ_HZ
 
-        angle = 2 * AMP_RAD / math.pi * math.asin(math.sin(2 * math.pi * t / period))
+        angle = 2 * AMP_RAD / PI * math.asin(math.sin(2 * PI * t / period))
         msg = Float64()
         msg.data = angle
 

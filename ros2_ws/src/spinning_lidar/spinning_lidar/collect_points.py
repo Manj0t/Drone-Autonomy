@@ -75,17 +75,18 @@ class ScanPrinter(Node):
 
                 p.x = x
                 p.y = y
-                p.z = x * math.sin(theta)
+                p.z = x * math.tan(theta)
                 self.marker.points.append(p)
                 self.get_logger().info(f"angle={angle:.3f}, r={r:.3f}, x={x:.3f}, y={y:.3f}")
 
                 if len(self.marker.points) > MAX_POINTS:
-                    self.marker.points.pop(0)           # Not a deque, O(N)
+                    self.marker.points.pop(0)          
 
             angle += msg.angle_increment
 
         # Publish points for RVIZ
         self.marker_pub.publish(self.marker)
+
 
 
         # temp
