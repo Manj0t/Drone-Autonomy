@@ -10,6 +10,7 @@ from geometry_msgs.msg import Point
 
 from std_msgs.msg import Float64
 
+PI = math.pi
 MAX_POINTS = 100000
 
 class ScanPrinter(Node):
@@ -73,9 +74,11 @@ class ScanPrinter(Node):
                 x = r * math.cos(angle)
                 y = r * math.sin(angle)
 
-                p.x = x
-                p.y = y
-                p.z = x * math.tan(theta)
+                a = x * math.cos(PI / 2 - theta)
+                b = x * math.sin(PI / 2 - theta)
+
+                p.x = a + x * a + y * b
+                
                 self.marker.points.append(p)
                 self.get_logger().info(f"angle={angle:.3f}, r={r:.3f}, x={x:.3f}, y={y:.3f}")
 
@@ -89,6 +92,7 @@ class ScanPrinter(Node):
 
 
 
+        ########## IGNORE BELOW
         # temp
         m = Marker()
         m.header.frame_id = "world" # msg.header.frame_id or "

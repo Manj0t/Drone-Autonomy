@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+# ---------- Source environments ----------
+source /opt/ros/jazzy/setup.bash
+source ~/drone-autonomy/ros2_ws/install/setup.bash
+
+# ---------- Cleanup on Ctrl+C ----------
+cleanup() {
+    pkill -f "ros2 run" || true
+}
+trap cleanup EXIT
+
+
+
+echo "Starting bridge for collecting points..."
+ros2 run ros_gz_bridge parameter_bridge /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan &
+sleep 2
+
+echo "Starting bridge for rotating lidar..."
+ros2 run ros_gz_bridge parameter_bridge /model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos@std_msgs/msg/Float64@gz.msgs.Double &
+sleep 2
+

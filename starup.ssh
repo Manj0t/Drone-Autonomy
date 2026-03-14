@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -e
+
+# ---------- Source environments ----------
+source /opt/ros/jazzy/setup.bash
+source ~/drone-autonomy/ros2_ws/install/setup.bash
+
+# ---------- Cleanup on Ctrl+C ----------
+cleanup() {
+    echo "Stopping all launched processes..."
+    pkill -f "gz sim" || true
+    pkill -f ""micro-xrce-dds-agen || true
+    pkill -f "rviz2" || true
+    pkill -f "QGroundControl" || true
+    pkill -f "ros2 launch" || true
+    pkill -f "ros2 run" || true
+}
+trap cleanup EXIT
+
+echo "Starting MicroXRCEAgent..."
+micro-xrce-dds-agent udp4 -p 8888 &
+sleep 2
+
+echo "Starting bridge for collecting points..."
+ros2 run ros_gz_bridge parameter_bridge /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan &
+sleep 2
+
+echo "Starting bridge for rotating lidar..."
+ros2 run ros_gz_bridge parameter_bridge /model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos@std_msgs/msg/Float64@gz.msgs.Double &
+sleep 2
+
+echo "Starting spinning lidar node..."
+ros2 run spinning_lidar spinning_lidar_node &
+sleep 3
+
+echo "Starting offboard node..."
+ros2 run offboard_control offboard_control_node &
+sleep 2
+
+echo "Starting lidar pitch node..."
+ros2 run lidar_pitch_sweep sweep_lidar_pitch > /tmp/lidar_pitch.log 2>&1 &
+sleep 2
+
+echo "Starting RViz..."
+rviz2 &
+sleep 2
+
+echo "Starting QGroundControl..."
+~/Downloads/QGroundControl-x86_64.AppImage &
+sleep 2
+
+echo "All processes launched."
+wait
