@@ -4,7 +4,7 @@ set -e
 
 # ---------- Source environments ----------
 source /opt/ros/jazzy/setup.bash
-source ~/drone-autonomy/ros2_ws/install/setup.bash
+source ~/Drone-Autonomy/ros2_ws/install/setup.bash
 
 # ---------- Cleanup on Ctrl+C ----------
 cleanup() {

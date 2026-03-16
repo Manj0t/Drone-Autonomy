@@ -10,8 +10,17 @@ from geometry_msgs.msg import Point
 
 from std_msgs.msg import Float64
 
+import numpy as np
+
 PI = math.pi
 MAX_POINTS = 100000
+L = 0.26
+
+def cos(x):
+    return math.cos(x)
+
+def sin(x):
+    return math.sin(x)
 
 class ScanPrinter(Node):
     def __init__(self):
@@ -56,31 +65,45 @@ class ScanPrinter(Node):
         self.marker.scale.x = 0.01
         self.marker.scale.y = 0.01
     
-    def on_pitch(self, msg):
+    def on_pitch(self, msg: Float64) -> None:
         self.current_pitch = msg.data
 
-    def on_scan(self, msg):
+    def get_points(self, r: float, angle: float, pitch: float) -> Point:
+        p = Point()
+
+        x_local = r * math.cos(angle)
+        y_local = r * math.sin(angle)
+
+        
+        # Rotate the point based on the LiDAR pitch
+        gamma = PI/2 - pitch
+
+        P_0 = np.array([0 + L * math.sin(pitch), 0, 0 + L * math.cos(pitch)])
+
+        N = np.array([cos(gamma), 0, sin(gamma)])
+
+        a = np.array([cos(PI - pitch), 0, sin(PI - pitch)])
+        b = np.array([0.0, 1.0, 0.0])
+
+        world_vec = P_0 + x_local * a + y_local * b
+
+        p.x, p.y, p.z = world_vec
+
+        return p
+    
+
+    def on_scan(self, msg: LaserScan) -> None:
         self.marker.header.stamp = self.get_clock().now().to_msg() # Not entirely sure why
 
-        theta = self.current_pitch
-        angle = msg.angle_min
+        thet: float = self.current_pitch
+        angle: float = msg.angle_min
 
         for r in msg.ranges:
             # If no object is hit, don't map
             if math.isfinite(r):
-                p = Point()
-
-                # Map to cartesian points
-                x = r * math.cos(angle)
-                y = r * math.sin(angle)
-
-                a = x * math.cos(PI / 2 - theta)
-                b = x * math.sin(PI / 2 - theta)
-
-                p.x = a + x * a + y * b
+                p = self.get_points(r, angle, thet)
                 
                 self.marker.points.append(p)
-                self.get_logger().info(f"angle={angle:.3f}, r={r:.3f}, x={x:.3f}, y={y:.3f}")
 
                 if len(self.marker.points) > MAX_POINTS:
                     self.marker.points.pop(0)          
