@@ -3,12 +3,14 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
+from px4_msgs.msg import VehicleLocalPosition
 
 import math
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
 
 from std_msgs.msg import Float64
+from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy, HistoryPolicy
 
 import numpy as np
 
@@ -31,12 +33,28 @@ class ScanPrinter(Node):
             self.on_scan,
             10
         )
+
         self.create_subscription(
             Float64,
             "/model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos",
             self.on_pitch,
             10
         )
+
+        px4_qos = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            durability=DurabilityPolicy.VOLATILE,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=1
+        )
+        self.create_subscription(
+            VehicleLocalPosition,
+            '/fmu/out/vehicle_local_position_v1',
+            self.on_local_position,
+            px4_qos
+        )
+
+        self.current_altitude = 0.0
 
         self.current_pitch = 0.0
         self.marker_pub = self.create_publisher(Marker, 'lidar_points', 10) # Create Publisher for RVIZ to subscribe to
@@ -68,26 +86,16 @@ class ScanPrinter(Node):
     def on_pitch(self, msg: Float64) -> None:
         self.current_pitch = msg.data
 
+    def on_local_position(self, msg: VehicleLocalPosition):
+        self.current_altitude = -msg.z
+        print(self.current_altitude)
+
     def get_points(self, r: float, angle: float, pitch: float) -> Point:
         p = Point()
 
-        x_local = r * math.cos(angle)
-        y_local = r * math.sin(angle)
-
-        
-        # Rotate the point based on the LiDAR pitch
-        gamma = PI/2 - pitch
-
-        P_0 = np.array([0 + L * math.sin(pitch), 0, 0 + L * math.cos(pitch)])
-
-        N = np.array([cos(gamma), 0, sin(gamma)])
-
-        a = np.array([cos(PI - pitch), 0, sin(PI - pitch)])
-        b = np.array([0.0, 1.0, 0.0])
-
-        world_vec = P_0 + x_local * a + y_local * b
-
-        p.x, p.y, p.z = world_vec
+        p.x = r * math.cos(angle)
+        p.y = r * math.sin(angle)
+        p.z = L + self.current_altitude
 
         return p
     
