@@ -11,12 +11,10 @@ from geometry_msgs.msg import TransformStamped
 import tf2_ros
 
 
-# Static quaternions for NED/FRD → ENU/FLU conversion
-# q_ned_to_enu: 180° around axis [1/√2, 1/√2, 0] — maps North→East, East→North, Down→Up
+
 _S2 = math.sqrt(2) / 2
 _Q_NED_TO_ENU = (_S2, _S2, 0.0, 0.0)  # (x, y, z, w) scipy convention
 
-# q_frd_to_flu: 180° around forward (X) axis — maps Right→Left, Down→Up
 _Q_FRD_TO_FLU = (1.0, 0.0, 0.0, 0.0)  # (x, y, z, w)
 
 
@@ -40,7 +38,7 @@ def _quat_conj(q):
 def _px4_to_ros_quat(q_px4_wxyz):
     """Convert PX4 quaternion [w,x,y,z] NED/FRD to ROS [x,y,z,w] ENU/FLU."""
     w, x, y, z = q_px4_wxyz
-    q = (x, y, z, w)  # repack to (x,y,z,w)
+    q = (x, y, z, w)
     q_result = _quat_mul(_Q_NED_TO_ENU, _quat_mul(q, _quat_conj(_Q_FRD_TO_FLU)))
     return q_result  # (x, y, z, w)
 
@@ -81,12 +79,10 @@ class PX4OdomBridge(Node):
         odom.header.frame_id = 'odom'
         odom.child_frame_id = 'base_link'
 
-        # Position: NED → ENU
         odom.pose.pose.position.x = float(msg.position[1])   # East
         odom.pose.pose.position.y = float(msg.position[0])   # North
         odom.pose.pose.position.z = float(-msg.position[2])  # Up
 
-        # Orientation: PX4 [w,x,y,z] FRD/NED → ROS [x,y,z,w] FLU/ENU
         if not math.isnan(msg.q[0]):
             qx, qy, qz, qw = _px4_to_ros_quat(msg.q)
             odom.pose.pose.orientation.x = qx
@@ -94,13 +90,11 @@ class PX4OdomBridge(Node):
             odom.pose.pose.orientation.z = qz
             odom.pose.pose.orientation.w = qw
 
-        # Velocity: NED → ENU
         if not math.isnan(msg.velocity[0]):
             odom.twist.twist.linear.x = float(msg.velocity[1])
             odom.twist.twist.linear.y = float(msg.velocity[0])
             odom.twist.twist.linear.z = float(-msg.velocity[2])
 
-        # Angular velocity: FRD → FLU (flip Y and Z)
         if not math.isnan(msg.angular_velocity[0]):
             odom.twist.twist.angular.x = float(msg.angular_velocity[0])
             odom.twist.twist.angular.y = float(-msg.angular_velocity[1])
@@ -108,7 +102,6 @@ class PX4OdomBridge(Node):
 
         self.pub.publish(odom)
 
-        # Publish odom -> base_link TF (rtabmap needs this alongside the topic)
         tf = TransformStamped()
         tf.header.stamp = odom.header.stamp
         tf.header.frame_id = 'odom'

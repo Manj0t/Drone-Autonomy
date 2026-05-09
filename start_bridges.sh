@@ -85,6 +85,12 @@ _launch "Depth point cloud bridge" \
     ros2 run ros_gz_bridge parameter_bridge \
     /depth_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
 
+sleep 1 
+
+_launch "Depth camera image bridge" \
+    ros2 run ros_gz_bridge parameter_bridge \
+    /depth_camera@sensor_msgs/msg/Image[gz.msgs.Image
+
 sleep 1
 
 _launch "3D lidar point cloud bridge" \

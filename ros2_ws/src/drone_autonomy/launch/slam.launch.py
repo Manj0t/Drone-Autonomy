@@ -23,6 +23,7 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='static_tf_camera_link',
             arguments=['0.14', '0', '0.22', '0', '0', '0', 'base_link', 'camera_link'],
+            parameters=[{'use_sim_time': use_sim_time}],
         ),
 
         Node(
@@ -30,6 +31,7 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='static_tf_lidar_link',
             arguments=['0.12', '0', '0.26', '0', '0', '0', 'base_link', 'link'],
+            parameters=[{'use_sim_time': use_sim_time}],
         ),
 
         Node(
@@ -55,8 +57,8 @@ def generate_launch_description():
                 'map_frame_id': 'map',
 
                 # Sensor Subscriptions
-                'subscribe_depth': False,
-                'subscribe_scan_cloud': True,
+                'subscribe_depth': True,
+                'subscribe_scan_cloud': False,
                 'subscribe_scan': False,
                 'approx_sync': True,        # Sync Lidar and cam
                 'queue_size': 10,           # buffer
@@ -65,7 +67,7 @@ def generate_launch_description():
                 'Mem/IncrementalMemory': 'true',    # Build map from scratch instead of finding where drone is in a pre generated map
                 'Mem/InitWMWithAllNodes': 'false',  # Load a map from DB if true
                 'Mem/STMSize': '30',                # How many recent nodes stay in short-term memory before moving to WM
-                'database_path': '/tmp/rtabmap.db', # Explicit path — delete this file for a fresh start
+                'database_path': '/tmp/rtabmap.db', # Explicit path. rm /tmp/rtabmap.db for a fresh start
 
                 # Visual Features
                 'Kp/MaxFeatures': '500',        # Maximum number of visual keypoints to extract per frame.
@@ -79,7 +81,7 @@ def generate_launch_description():
                 # With depth cam + LiDAR you have both, so use 2
                 'Reg/Strategy': '2',
                 'Reg/Force3DoF': 'false',                   # false because we want full 3D with the depth camera
-                                                            # set true if you only want 2D
+                                                            
                 # ICP (scan matching for LiDAR)
                 "Icp/MaxCorrespondenceDistance": '0.15',    # Max distance between mathced scan points (meters)
                 'Icp/VoxelSize': '0.05',                    # Downsample scans to 5cm before matching, speeds it up
@@ -96,8 +98,8 @@ def generate_launch_description():
                 'RGBD/AngularUpdate': '0.1',        # Add new node after ~6 degree rotation
 
                 # Occupancy Grid (3D)
-                'Grid/Sensor': '0',                 # scan_cloud is stored as scan in SensorData; 0=scan for grid
-                'Grid/FromDepth': 'false',
+                'Grid/Sensor': '1',                 # scan_cloud is stored as scan in SensorData; 0=scan for grid
+                'Grid/FromDepth': 'true',
                 'Grid/RangeMax': '5.0',             # Max depth range to use, depth cameras get noitsy past 5m
                 'Grid/RangeMin': '0.3',             # Ignore depth closer than 30cm
                 'Grid/CellSize': '0.05',            # 5cm resolution
@@ -122,13 +124,13 @@ def generate_launch_description():
 
             # --- Topic Remappings ---
             # Left side = what RTAB-Map expects
-            # Right side = what YOUR drone actually publishes
-            # CHANGE the right side to match real topics
+            # Right side = published on ros
             # Find with: ros2 topic list | grep -E "camera|scan|odom"
             remappings=[
                 ('rgb/image',       '/world/default/model/x500_lidar_2d_0/link/camera_link/sensor/IMX214/image'),
                 ('rgb/camera_info', '/world/default/model/x500_lidar_2d_0/link/camera_link/sensor/IMX214/camera_info'),
-                ('scan_cloud',       '/depth_camera/points'),
+     #           ('scan_cloud',       '/depth_camera/points'),
+                ('depth/image',     '/depth_camera'),
                 ('scan',            '/world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan'),
                 ('odom',            '/odom'),
                 ('imu',             '/world/default/model/x500_lidar_2d_0/link/camera_link/sensor/camera_imu/imu'),

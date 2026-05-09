@@ -59,16 +59,10 @@ class SLAMMonitor(Node):
             Float32, '/slam/confidence', 10,
         )
 
-        # Health check runs every second
         self.create_timer(1.0, self._health_check)
         self.get_logger().info('SLAM Monitor started')
 
     def _odom_cb(self, msg: Odometry):
-        """
-        Called every time RTAB-Map publishes corrected odometry.
-        If we're receiving odom, SLAM is tracking.
-        """
-        # Convert Odometry to simpler PoseStamped
         pose_msg = PoseStamped()
         pose_msg.header = msg.header
         pose_msg.pose = msg.pose.pose
@@ -78,19 +72,13 @@ class SLAMMonitor(Node):
         self.last_good_stamp = self.get_clock().now()
         if self.is_lost:
             self.is_lost = False
-            self.slam_confidence = 0.5 # Recovered but not fully confident yet
+            self.slam_confidence = 0.5
             self.get_logger().info('SLAM tracking recovered')
 
     def _map_cb(self, msg: OccupancyGrid):
-        """
-        Forward occupancy grid to explore_lite.
-        """
         self.map_pub.publish(msg)
 
     def _health_check(self):
-        """
-        Runs every 1 second. Checks if SLAM is still alive.
-        """
         elapsed = (
             self.get_clock().now() - self.last_good_stamp
         ).nanoseconds / 1e9

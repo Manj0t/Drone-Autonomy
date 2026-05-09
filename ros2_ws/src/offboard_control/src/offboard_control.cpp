@@ -36,11 +36,10 @@ OffboardControl::OffboardControl() : rclcpp::Node("offboard_control") {
         std::bind(&OffboardControl::pose_callback, this, std::placeholders::_1)
     );
 
-    // Create a timer based on real ("wall") time
     // Comes from rclcpp
     timer_ = this->create_wall_timer(
         std::chrono::milliseconds(50),  // 20Hz = 50ms. C++ standard library <chrono>
-        std::bind(&OffboardControl::timer_callback, this)  //<functional>
+        std::bind(&OffboardControl::timer_callback, this) 
     ); // Call this->timer_callback() every 50ms
 }
 
@@ -53,7 +52,6 @@ void OffboardControl::timer_callback() {
     // x = North, y = East, z = Down
     setpoint.position = {0.0, 0.0, -5.0}; // hover 5m up
 
-    // .publish() hands message to ROS middleware, which sends it to anyone subscribed to the topic. (PX4 bridge)
     offboard_control_mode_pub_->publish(mode);
     trajectory_setpoint_pub_->publish(setpoint);
 }
@@ -64,7 +62,7 @@ void OffboardControl::map_callback(
     // For now: just fly to a fixed test goal to verify the pipeline
     current_goal_.x = 5.0;
     current_goal_.y = 0.0;
-    current_goal_.z = 5.0; // 5m altitude in ENU
+    current_goal_.z = 5.0;
     has_goal_ = true;
 }
 
