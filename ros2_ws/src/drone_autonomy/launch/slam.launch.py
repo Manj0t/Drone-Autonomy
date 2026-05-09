@@ -114,13 +114,17 @@ def generate_launch_description():
                 'Optimizer/Strategy': '1',          # g2o - fixes drift when loop closures are detected
                 'Optimizer/Iterations': '20',       # More iterations = more accurate but slower. 20 is standard
                 'Optimizer/GravitySigma': '0.3',    # How much to trust IMU gravity for pitch/roll correction
+
+                # 'Grid/OccupancySensor': '1',
+                # 'Octomap/TreeDepth': '16',        # resolution control
+                # 'Octomap/OccupancyThr': '0.5',
             }],
 
             # --- Topic Remappings ---
             # Left side = what RTAB-Map expects
             # Right side = what YOUR drone actually publishes
-            # CHANGE the right side to match your real topics
-            # Find yours with: ros2 topic list | grep -E "camera|scan|odom"
+            # CHANGE the right side to match real topics
+            # Find with: ros2 topic list | grep -E "camera|scan|odom"
             remappings=[
                 ('rgb/image',       '/world/default/model/x500_lidar_2d_0/link/camera_link/sensor/IMX214/image'),
                 ('rgb/camera_info', '/world/default/model/x500_lidar_2d_0/link/camera_link/sensor/IMX214/camera_info'),

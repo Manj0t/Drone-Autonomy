@@ -26,6 +26,16 @@ OffboardControl::OffboardControl() : rclcpp::Node("offboard_control") {
         10
     );
 
+    map_sub_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
+        "/rtabmap/cloud_map", 1,
+        std::bind(&OffboardControl::map_callback, this, std::placeholders::_1)
+    );
+
+    pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
+        "/slam/corrected_pose", 10,  // already published by your slam_monitor!
+        std::bind(&OffboardControl::pose_callback, this, std::placeholders::_1)
+    );
+
     // Create a timer based on real ("wall") time
     // Comes from rclcpp
     timer_ = this->create_wall_timer(
@@ -46,6 +56,16 @@ void OffboardControl::timer_callback() {
     // .publish() hands message to ROS middleware, which sends it to anyone subscribed to the topic. (PX4 bridge)
     offboard_control_mode_pub_->publish(mode);
     trajectory_setpoint_pub_->publish(setpoint);
+}
+
+void OffboardControl::map_callback(
+    const sensor_msgs::msg::PointCloud2::SharedPtr msg) 
+{
+    // For now: just fly to a fixed test goal to verify the pipeline
+    current_goal_.x = 5.0;
+    current_goal_.y = 0.0;
+    current_goal_.z = 5.0; // 5m altitude in ENU
+    has_goal_ = true;
 }
 
 // msg.position = true;
