@@ -3,10 +3,26 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
+from px4_msgs.msg import VehicleLocalPosition
 
 import math
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
+
+from std_msgs.msg import Float64
+from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy, HistoryPolicy
+
+import numpy as np
+
+PI = math.pi
+MAX_POINTS = 100000
+L = 0.26
+
+def cos(x):
+    return math.cos(x)
+
+def sin(x):
+    return math.sin(x)
 
 class ScanPrinter(Node):
     def __init__(self):
@@ -17,53 +33,100 @@ class ScanPrinter(Node):
             self.on_scan,
             10
         )
+
+        self.create_subscription(
+            Float64,
+            "/model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos",
+            self.on_pitch,
+            10
+        )
+
+        px4_qos = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            durability=DurabilityPolicy.VOLATILE,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=1
+        )
+        self.create_subscription(
+            VehicleLocalPosition,
+            '/fmu/out/vehicle_local_position_v1',
+            self.on_local_position,
+            px4_qos
+        )
+
+        self.current_altitude = 0.0
+
+        self.current_pitch = 0.0
         self.marker_pub = self.create_publisher(Marker, 'lidar_points', 10) # Create Publisher for RVIZ to subscribe to
         self.fov_pub = self.create_publisher(Marker, 'lidar_fov', 10)
 
-    def on_scan(self, msg):
-        marker = Marker()
-        marker.header.frame_id = 'link'
-        marker.header.stamp = self.get_clock().now().to_msg() # Not entirely sure why
+
+        self.marker = Marker()
+        self.marker.header.frame_id = 'world'
         # Tell RVIZ how to map these points
-        marker.type = Marker.POINTS
+        self.marker.type = Marker.POINTS
 
         # Unique identifiers
-        marker.action = Marker.ADD
-        marker.ns = "lidar"
-        marker.id = 0
+        self.marker.action = Marker.ADD
+        self.marker.ns = "lidar"
+        self.marker.id = 0
 
-        marker.pose.orientation.w = 1.0  # orientation
+        self.marker.pose.orientation.w = 1.0  # orientation
 
         # RGB
-        marker.color.r = 1.0
-        marker.color.g = 1.0
-        marker.color.b = 1.0
-        marker.color.a = 1.0  # Opacity
+        self.marker.color.r = 1.0
+        self.marker.color.g = 1.0
+        self.marker.color.b = 1.0
+        self.marker.color.a = 1.0  # Opacity
 
         # Point size (0.3 == 3cm)
-        marker.scale.x = 0.01
-        marker.scale.y = 0.01
+        self.marker.scale.x = 0.01
+        self.marker.scale.y = 0.01
+    
+    def on_pitch(self, msg: Float64) -> None:
+        self.current_pitch = msg.data
 
-        angle = msg.angle_min
+    def on_local_position(self, msg: VehicleLocalPosition):
+        self.current_altitude = -msg.z
+        print(self.current_altitude)
+
+    def get_points(self, r: float, angle: float, pitch: float) -> Point:
+        p = Point()
+
+        p.x = r * math.cos(angle)
+        p.y = r * math.sin(angle)
+        p.z = L + self.current_altitude
+
+        return p
+    
+
+    def on_scan(self, msg: LaserScan) -> None:
+        self.marker.header.stamp = self.get_clock().now().to_msg() # Not entirely sure why
+
+        thet: float = self.current_pitch
+        angle: float = msg.angle_min
+
         for r in msg.ranges:
             # If no object is hit, don't map
             if math.isfinite(r):
-                p = Point()
-                # Map to cartesian points
-                p.x = r * math.cos(angle)
-                p.y = r * math.sin(angle)
-                p.z = 0.0
-                marker.points.append(p)
+                p = self.get_points(r, angle, thet)
+                
+                self.marker.points.append(p)
+
+                if len(self.marker.points) > MAX_POINTS:
+                    self.marker.points.pop(0)          
 
             angle += msg.angle_increment
 
         # Publish points for RVIZ
-        self.marker_pub.publish(marker)
+        self.marker_pub.publish(self.marker)
 
 
+
+        ########## IGNORE BELOW
         # temp
         m = Marker()
-        m.header.frame_id = msg.header.frame_id or "link"
+        m.header.frame_id = "world" # msg.header.frame_id or "
         m.header.stamp = self.get_clock().now().to_msg()
         m.ns = "lidar"
         m.id = 1

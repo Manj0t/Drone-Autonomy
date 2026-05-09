@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.9">
+  <model name="x500_lidar_2d">
+    <include merge="true">
+      <uri>x500</uri>
+    </include>
+
+    <!-- =====================================================================
+         EXISTING: 2D LiDAR on pitch servo (forward-facing, tilting)
+         ===================================================================== -->
+    <include merge="true">
+      <uri>model://lidar_2d_v2</uri>
+      <pose>0.12 0 0.26 0 0 0</pose>
+    </include>
+
+    <link name="lidar_mount">
+      <pose>0.12 0 0.26 0 0 0</pose>
+      <inertial>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>1e-4</ixx> <iyy>1e-4</iyy> <izz>1e-4</izz>
+          <ixy>0</ixy> <ixz>0</ixz> <iyz>0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="LidarPitchJoint" type="revolute">
+      <parent>base_link</parent>
+      <child>lidar_mount</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.6</lower>
+          <upper>0.6</upper>
+          <effort>5.0</effort>
+          <velocity>8.0</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.02</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint name="LidarFixedToMount" type="fixed">
+      <parent>lidar_mount</parent>
+      <child>link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <!-- =====================================================================
+         1D LiDAR (rangefinder) pointing straight DOWN — LW20 model
+         Matches x500_lidar_down convention.
+         Used for: floor distance, terrain following, altitude hold.
+         ===================================================================== -->
+    <include merge='true'>
+      <uri>model://LW20</uri>
+      <pose relative_to="base_link">-.04 0 -0.079 0 1.57 0</pose>
+    </include>
+
+    <joint name="lidar_model_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>lw20_link</child>
+      <pose relative_to="base_link">0 0 0 0 0 0</pose>
+    </joint>
+
+    <link name="lidar_sensor_link">
+      <pose relative_to="base_link">0 0 -0.05 0 1.57 0</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.00001</ixx>
+          <iyy>0.00001</iyy>
+          <izz>0.00001</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+      <sensor name='lidar' type='gpu_lidar'>
+        <gz_frame_id>lidar_sensor_link</gz_frame_id>
+        <pose>0 0 0 3.14 0 0</pose>
+        <update_rate>50</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>1</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>0</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>1</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>0</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.1</min>
+            <max>100.0</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <always_on>1</always_on>
+        <visualize>true</visualize>
+      </sensor>
+    </link>
+
+    <joint name="lidar_sensor_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>lidar_sensor_link</child>
+    </joint>
+
+    <!-- =====================================================================
+         Front-facing monocular camera — mono_cam model
+         RGB only (1280x960, ~100 deg FOV). No depth.
+         For: Visual SLAM (fused with IMU for scale) and object detection.
+         Pose: front of drone (x=0.12), centered (y=0), top of frame (z=0.05).
+         z=0.05 sits above the frame body (~z=0.03) and well below the 2D lidar
+         mast (z=0.26), so no visual or physical overlap with any other sensor.
+         Faces forward (+x) with no rotation.
+         ===================================================================== -->
+    <include merge='true'>
+      <uri>model://OakD-Lite</uri>
+      <pose>0.15 0.03 0.24 0 0 0</pose>
+    </include>
+    <joint name="CameraJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>camera_link</child>
+      <pose relative_to="base_link">0.14 0 0.22 0 0 0</pose>
+    </joint>
+
+    <!-- =====================================================================
+         Downward-facing optical flow sensor — optical_flow model
+         Matches x500_flow convention exactly.
+         Pose: slightly forward of center (x=0.03), bottom of drone (z=-0.1).
+         The flow sensor camera + optical_flow custom sensor both face -Z.
+         Works alongside the LW20 (z=-0.079): no overlap (different z levels).
+         ===================================================================== -->
+    <include merge='true'>
+      <uri>model://optical_flow</uri>
+      <pose relative_to="base_link">-0.0005 0 -0.05 0 0 0</pose>
+    </include>
+
+    <joint name="optical_flow_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>flow_link</child>
+      <pose relative_to="base_link">0 0 -0.03 0 1.5707 0</pose>
+    </joint>
+    <!-- =====================================================================
+         PLUGINS
+         ===================================================================== -->
+    <plugin filename="libgz-sim-joint-state-publisher-system.so"
+            name="gz::sim::systems::JointStatePublisher"/>
+
+    <plugin filename="libgz-sim-joint-position-controller-system.so"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>LidarPitchJoint</joint_name>
+      <topic>/model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos</topic>
+      <p_gain>20</p_gain>
+    </plugin>
+
+  </model>
+</sdf>

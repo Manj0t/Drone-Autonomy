@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+set -e
+
+ROS_SETUP="source /opt/ros/jazzy/setup.bash; source ~/drone-autonomy/ros2_ws/install/setup.bash"
+PROJECT_ROOT="$HOME/drone-autonomy"
+PX4_ROOT="$HOME/PX4-Autopilot"
+
+echo "Starting PX4 SITL..."
+gnome-terminal -- bash -c "
+cd \"$PX4_ROOT\"
+make px4_sitl gz_x500_lidar_2d
+exec bash
+"
+
+sleep 5
+
+echo "Starting Micro XRCE Agent..."
+gnome-terminal -- bash -c "
+$ROS_SETUP
+micro-xrce-dds-agent udp4 -p 8888
+exec bash
+"
+
+sleep 2
+
+echo "Starting bridges..."
+gnome-terminal -- bash -c "
+$ROS_SETUP
+ros2 run ros_gz_bridge parameter_bridge /world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan &
+sleep 2
+ros2 run ros_gz_bridge parameter_bridge /model/x500_lidar_2d_0/joint/LidarPitchJoint/cmd_pos@std_msgs/msg/Float64@gz.msgs.Double &
+wait
+exec bash
+"
+
+sleep 2
+
+echo "Starting spinning lidar node..."
+gnome-terminal -- bash -c "
+$ROS_SETUP
+ros2 run spinning_lidar spinning_lidar_node
+exec bash
+"
+
+sleep 2
+
+echo "Starting offboard node..."
+gnome-terminal -- bash -c "
+$ROS_SETUP
+ros2 run offboard_control offboard_control_node
+exec bash
+"
+
+sleep 2
+
+echo "Starting RViz..."
+gnome-terminal -- bash -c "
+$ROS_SETUP
+rviz2
+exec bash
+"
+
+sleep 2
+
+echo "Starting QGroundControl..."
+gnome-terminal -- bash -c "
+~/QGroundControl.AppImage
+exec bash
+"
+
+echo "All processes launched."

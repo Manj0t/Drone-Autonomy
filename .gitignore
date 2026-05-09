@@ -3,3 +3,20 @@ ros2_ws/src/px4_msgs/
 ros2_ws/build/
 ros2_ws/install/
 ros2_ws/log/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# ROS bag files
+*.bag
+*.db3
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
